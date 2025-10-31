@@ -1,0 +1,194 @@
+{
+  "last_node_id": 9,
+  "last_link_id": 12,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [50, 100],
+      "size": {"0": 315, "1": 98},
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {"name": "MODEL", "type": "MODEL", "links": [1], "slot_index": 0},
+        {"name": "CLIP", "type": "CLIP", "links": [2, 3], "slot_index": 1},
+        {"name": "VAE", "type": "VAE", "links": null}
+      ],
+      "properties": {"Node name for S&R": "CheckpointLoaderSimple"},
+      "widgets_values": ["v1-5-pruned-emaonly.safetensors"]
+    },
+    {
+      "id": 2,
+      "type": "CLIPTextEncode",
+      "pos": [400, 50],
+      "size": {"0": 400, "1": 200},
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [{"name": "clip", "type": "CLIP", "link": 2}],
+      "outputs": [
+        {"name": "CONDITIONING", "type": "CONDITIONING", "links": [4], "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "CLIPTextEncode"},
+      "widgets_values": ["stunning cinematic landscape, mountains at sunrise, golden hour lighting, 8k, highly detailed, masterpiece, beautiful colors, epic scenery"]
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [400, 300],
+      "size": {"0": 400, "1": 200},
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [{"name": "clip", "type": "CLIP", "link": 3}],
+      "outputs": [
+        {"name": "CONDITIONING", "type": "CONDITIONING", "links": [5], "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "CLIPTextEncode"},
+      "widgets_values": ["low quality, worst quality, blurry, watermark, text, signature, deformed, ugly, mutated"]
+    },
+    {
+      "id": 4,
+      "type": "ADE_LoadAnimateDiffModel",
+      "pos": [50, 250],
+      "size": {"0": 315, "1": 58},
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {"name": "MOTION_MODEL", "type": "MOTION_MODEL", "links": [6], "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "ADE_LoadAnimateDiffModel"},
+      "widgets_values": ["mm_sd_v15_v2.ckpt"]
+    },
+    {
+      "id": 5,
+      "type": "ADE_UseEvolvedSampling",
+      "pos": [850, 100],
+      "size": {"0": 315, "1": 118},
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {"name": "model", "type": "MODEL", "link": 1},
+        {"name": "motion_model", "type": "MOTION_MODEL", "link": 6}
+      ],
+      "outputs": [
+        {"name": "MODEL", "type": "MODEL", "links": [7], "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "ADE_UseEvolvedSampling"},
+      "widgets_values": ["FlatCFG", 1]
+    },
+    {
+      "id": 6,
+      "type": "EmptyLatentImage",
+      "pos": [850, 300],
+      "size": {"0": 315, "1": 106},
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {"name": "LATENT", "type": "LATENT", "links": [8], "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "EmptyLatentImage"},
+      "widgets_values": [512, 512, 16]
+    },
+    {
+      "id": 7,
+      "type": "KSampler",
+      "pos": [1200, 100],
+      "size": {"0": 315, "1": 262},
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {"name": "model", "type": "MODEL", "link": 7},
+        {"name": "positive", "type": "CONDITIONING", "link": 4},
+        {"name": "negative", "type": "CONDITIONING", "link": 5},
+        {"name": "latent_image", "type": "LATENT", "link": 8}
+      ],
+      "outputs": [
+        {"name": "LATENT", "type": "LATENT", "links": [9], "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "KSampler"},
+      "widgets_values": [42, "fixed", 20, 7.5, "euler", "normal", 1]
+    },
+    {
+      "id": 8,
+      "type": "VAELoader",
+      "pos": [50, 400],
+      "size": {"0": 315, "1": 58},
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {"name": "VAE", "type": "VAE", "links": [10], "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "VAELoader"},
+      "widgets_values": ["vae-ft-mse-840000-ema-pruned.safetensors"]
+    },
+    {
+      "id": 9,
+      "type": "VAEDecode",
+      "pos": [1200, 450],
+      "size": {"0": 210, "1": 46},
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {"name": "samples", "type": "LATENT", "link": 9},
+        {"name": "vae", "type": "VAE", "link": 10}
+      ],
+      "outputs": [
+        {"name": "IMAGE", "type": "IMAGE", "links": [11], "slot_index": 0}
+      ],
+      "properties": {"Node name for S&R": "VAEDecode"}
+    },
+    {
+      "id": 10,
+      "type": "VHS_VideoCombine",
+      "pos": [1500, 100],
+      "size": {"0": 315, "1": 290},
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {"name": "images", "type": "IMAGE", "link": 11}
+      ],
+      "outputs": [],
+      "properties": {"Node name for S&R": "VHS_VideoCombine"},
+      "widgets_values": {
+        "frame_rate": 8,
+        "loop_count": 0,
+        "filename_prefix": "AnimateDiff",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "pingpong": false,
+        "save_output": true
+      }
+    }
+  ],
+  "links": [
+    [1, 1, 0, 5, 0, "MODEL"],
+    [2, 1, 1, 2, 0, "CLIP"],
+    [3, 1, 1, 3, 0, "CLIP"],
+    [4, 2, 0, 7, 1, "CONDITIONING"],
+    [5, 3, 0, 7, 2, "CONDITIONING"],
+    [6, 4, 0, 5, 1, "MOTION_MODEL"],
+    [7, 5, 0, 7, 0, "MODEL"],
+    [8, 6, 0, 7, 3, "LATENT"],
+    [9, 7, 0, 9, 0, "LATENT"],
+    [10, 8, 0, 9, 1, "VAE"],
+    [11, 9, 0, 10, 0, "IMAGE"]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
