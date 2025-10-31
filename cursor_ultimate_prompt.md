@@ -1,189 +1,159 @@
-# Cursor Ultimate Prompt Guide
+# البرومبت الشامل والحاسم لـ Cursor Agent  
+**لتوليد فيديو احترافي من الصور بلا قيود على iPad Air**
 
-## Overview
+***
 
-Prompt Perfect is designed to streamline your workflow when using Cursor with LLM assistants. This guide provides the ultimate workflow for generating context-rich prompts.
+## المرحلة 1: فحص وتهيئة البيئة الأساسية
 
-## Quick Start
-
-### Two Primary Commands
-
-1. **Prompt Perfect: Open Editors**
-   - Captures all currently open files
-   - Generates a structured prompt with file contents
-   - Perfect for focused code reviews or specific feature work
-
-2. **Prompt Perfect: Open Editors and ASCII Tree**
-   - Everything from "Open Editors"
-   - Adds ASCII representation of your project structure
-   - Ideal for architectural discussions or new contributor onboarding
-
-## Optimal Workflow
-
-### Step 1: Open Relevant Files
-Open only the files relevant to your current task in Cursor. The extension will include these files in your prompt.
-
-### Step 2: Configure Settings
-Click the Prompt Perfect icon in the Activity Bar to configure:
-- **Tree Depth Limit**: Default 4, adjust based on project complexity
-- **Auto Copy to Clipboard**: Enabled by default for seamless pasting
-- **Limit Prompt Length**: Optional token limiting
-- **Additional Instructions**: Custom context for your LLM
-
-### Step 3: Generate Your Prompt
-Use the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`) and select:
-- `Prompt Perfect: Open Editors` - For focused context
-- `Prompt Perfect: Open Editors and ASCII Tree` - For structural context
-
-### Step 4: Paste into Your LLM
-The prompt is automatically copied to your clipboard and displayed in the OUTPUT panel. Paste directly into:
-- Claude
-- ChatGPT
-- Cursor's AI chat
-- Any other LLM interface
-
-## Output Format
-
-### File Content Format
-```
-\`\`\`path/to/file.ts
-// File contents here
-\`\`\`
+```bash
+python --version            # يجب أن يكون 3.10+  
+pip --version  
+df -h                       # تحقق من أن لديك 50GB+ مساحة  
+git --version
+mkdir -p ~/comfyui-animatediff-pro
+cd ~/comfyui-animatediff-pro
+python3.10 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip setuptools wheel
 ```
 
-### Tree Structure Format (when enabled)
-```
-\`\`\`Source Tree
-project-root/
-├── src/
-│   ├── components/
-│   └── utils/
-└── tests/
-\`\`\`
-```
+***
 
-## Best Practices
+## المرحلة 2: تثبيت ComfyUI
 
-### 1. Strategic File Selection
-- Only open files directly relevant to your question
-- Close unrelated tabs to avoid context pollution
-- Use multiple prompts for different concerns rather than one massive prompt
-
-### 2. Effective Additional Instructions
-Default instruction: "If there is a file imported/included that I forgot to include or some other file you think I may have already created but have not included, please ask for that file before starting to generate a response."
-
-Customize based on your needs:
-- "Focus on TypeScript best practices"
-- "Prioritize performance optimizations"
-- "Suggest testing strategies"
-
-### 3. Token Management
-- Enable "Limit Prompt Length" for very large projects
-- Set max tokens based on your LLM's context window:
-  - GPT-4: ~8,000 tokens (safe limit)
-  - GPT-4-32k: ~30,000 tokens
-  - Claude 2: ~100,000 tokens
-  - Claude 3: ~200,000 tokens
-
-### 4. Tree Depth Optimization
-- Small projects: 4-6 levels
-- Large projects: 2-3 levels
-- Monorepos: Use focused depth to avoid overwhelming structure
-
-## Advanced Use Cases
-
-### Code Review
-1. Open all files in the PR/MR
-2. Generate prompt with ASCII tree
-3. Add instruction: "Review these changes for bugs, security issues, and best practices"
-
-### Debugging
-1. Open the problematic file and related imports
-2. Generate prompt
-3. Add instruction: "Help me debug this issue: [describe issue]"
-
-### Architecture Planning
-1. Open key architectural files
-2. Generate with ASCII tree
-3. Add instruction: "Suggest improvements to this architecture"
-
-### Documentation Writing
-1. Open the code files to document
-2. Generate prompt
-3. Add instruction: "Generate comprehensive documentation for these files"
-
-## Troubleshooting
-
-### Large File Warnings
-If you see warnings about large files:
-- Review whether the file is necessary for your question
-- Consider breaking your question into smaller, focused prompts
-- The extension warns at 1MB file size
-
-### Token Limit Exceeded
-If you hit token limits:
-- Close some open files
-- Reduce tree depth limit
-- Split your task into multiple prompts
-- Increase max token setting if your LLM supports it
-
-### Files Not Appearing
-Ensure:
-- Files are actually open in editor tabs (not just in explorer)
-- Files are within the workspace root
-- Files aren't ignored by .gitignore (the extension respects gitignore)
-
-## Integration with Cursor
-
-Prompt Perfect was designed with Cursor in mind:
-- Works seamlessly with Cursor's file handling
-- Respects .gitignore for clean project structure
-- Optimized for LLM-assisted coding workflows
-- Complements Cursor's built-in AI features
-
-## Tips for Maximum Effectiveness
-
-1. **Start Small**: Begin with fewer files and expand as needed
-2. **Iterate**: Generate multiple prompts as you refine your question
-3. **Be Specific**: Use additional instructions to guide the LLM's focus
-4. **Review Output**: Check the OUTPUT panel before pasting to verify context
-5. **Version Control**: Keep prompt-related settings in your workspace config
-
-## Example Workflows
-
-### Adding a New Feature
-```
-1. Open: feature spec, related components, tests
-2. Command: Open Editors and ASCII Tree
-3. Instruction: "Help me implement [feature] following existing patterns"
+```bash
+git clone https://github.com/comfyanonymous/ComfyUI.git
+cd ComfyUI
+pip install -r requirements.txt
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+python -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"
+cd ..
 ```
 
-### Refactoring
-```
-1. Open: files to refactor, related files
-2. Command: Open Editors
-3. Instruction: "Suggest refactoring to improve [concern]"
-```
+***
 
-### Bug Investigation
-```
-1. Open: buggy file, test file, related utilities
-2. Command: Open Editors
-3. Instruction: "This produces [unexpected behavior]. Help me find the issue."
+## المرحلة 3: تثبيت AnimateDiff Evolved
+
+```bash
+cd ComfyUI/custom_nodes
+git clone https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved.git
+git clone https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet.git
+git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git
+cd ../..
 ```
 
-## Future Enhancements
+***
 
-The extension is actively developed. Planned features:
-- Prompt history
-- Custom templates
-- More advanced token counting
-- Diff-based prompts for code reviews
+## المرحلة 4: إنشاء هيكلة المجلدات
 
-## Contributing
+```bash
+mkdir -p ComfyUI/models/checkpoints
+mkdir -p ComfyUI/models/vae
+mkdir -p ComfyUI/models/animatediff_models
+mkdir -p ComfyUI/models/animatediff_motion_lora
+mkdir -p ComfyUI/custom_nodes/ComfyUI-AnimateDiff-Evolved/models
+mkdir -p ComfyUI/custom_nodes/ComfyUI-AnimateDiff-Evolved/motion_lora
+mkdir -p ComfyUI/output
+find ComfyUI -type d -name "checkpoints" -o -name "vae" -o -name "models"
+```
 
-Found a bug or have a feature request? Contributions are welcome! This extension was built with LLM assistance and represents the future of collaborative coding.
+***
 
----
+## المرحلة 5: تحميل النماذج الأساسية
 
-*Remember: The best prompt is one that gives the LLM exactly the context it needs—no more, no less.*
+```bash
+wget -P ComfyUI/models/animatediff_models/ https://huggingface.co/guoyww/animatediff/resolve/main/v3_sd15_mm.safetensors
+wget -P ComfyUI/models/checkpoints/ https://huggingface.co/SG161222/Realistic_Vision_V6.0_B1/resolve/main/Realistic_Vision_V6.0_B1_fp16.safetensors
+wget -P ComfyUI/models/vae/ https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae.safetensors
+ls -lh ComfyUI/models/checkpoints/
+ls -lh ComfyUI/models/animatediff_models/
+ls -lh ComfyUI/models/vae/
+```
+
+***
+
+## المرحلة 6: إنشاء سكريبت التشغيل
+
+**املأ ملف باسم** `run_animatediff.py` **بالمحتوى التالي:**
+
+```python
+#!/usr/bin/env python3
+import json, subprocess, time, sys
+
+def create_workflow():
+    workflow = {
+        "1": {"inputs": {"ckpt_name": "Realistic_Vision_V6.0_B1_fp16.safetensors"}, "class_type": "CheckpointLoaderSimple"},
+        "2": {"inputs": {"text": "stunning cinematic landscape, mountains, sunrise, 8k, masterpiece"}, "class_type": "CLIPTextEncode"},
+        "3": {"inputs": {"text": "low quality, worst quality, blurry, watermark"}, "class_type": "CLIPTextEncode"},
+        "4": {"inputs": {"motion_model_name": "v3_sd15_mm.safetensors"}, "class_type": "AnimateDiffLoaderV3"},
+        "5": {"inputs": {"context_length": 16, "context_stride": 1, "context_overlap": 4, "closed_loop": False, "motion_scale": 1.0, "beta_schedule": "sqrt_linear"}, "class_type": "ADE_AnimateDiffOptions"},
+        "6": {"inputs": {"seed": 42, "steps": 20, "cfg": 7.5, "sampler_name": "euler", "scheduler": "normal", "denoise": 1.0, "model": ["1", 0], "positive": ["2", 0], "negative": ["3", 0], "latent_image": ["5", 0]}, "class_type": "KSampler"},
+        "7": {"inputs": {"samples": ["6", 0]}, "class_type": "VAEDecode"},
+        "8": {"inputs": {"images": ["7", 0], "frame_rate": 8, "format": "video/h264-mp4", "crf": 21, "filename_prefix": "animatediff"}, "class_type": "VHS_VideoCombine"}
+    }
+    return workflow
+
+def start_server():
+    print("Starting ComfyUI server...")
+    subprocess.Popen([sys.executable, "ComfyUI/main.py"])
+    time.sleep(10)
+
+def save_workflow():
+    workflow = create_workflow()
+    with open('workflow.json', 'w') as f:
+        json.dump(workflow, f, indent=2)
+    print("✓ Workflow saved to workflow.json")
+
+if __name__ == "__main__":
+    save_workflow()
+    start_server()
+    print("✓ ComfyUI is running at http://127.0.0.1:8188")
+```
+
+```bash
+chmod +x run_animatediff.py
+python run_animatediff.py
+```
+
+***
+
+## المرحلة 7: اختبار النظام
+
+```bash
+source venv/bin/activate
+cd ComfyUI
+python main.py
+curl http://127.0.0.1:8188/system_stats
+ls -la models/checkpoints/
+ls -la models/animatediff_models/
+```
+
+***
+
+## المرحلة 8: إنشـاء README
+
+```markdown
+# ComfyUI AnimateDiff Pro
+
+نظام احترافي لتوليد الفيديو من الصور
+
+## الميزات
+- فيديو بجودة عالية
+- تحكم في الحركة
+- بلا قيود للفيديو
+- أتمتة كاملة
+
+## البدء السريع
+source venv/bin/activate
+python run_animatediff.py
+```
+
+***
+
+## إعدادات Cursor Agent
+
+1. Settings > Features > Agent Mode > Enable
+2. Settings > Beta > YOLO Mode > Enable
+3. Allowlist: git, pip, python, mkdir, wget, curl
+4. Claude 3.5 Sonnet أو أحدث
+5. Full Codebase Context
