@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+
+# ComfyUI specific
+comfyui/ComfyUI/
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.bin
+
+# Models (???? ????)
+models/
+checkpoints/
+vae/
+animatediff_models/
+loras/
+embeddings/
+
+# Outputs
+output/
+outputs/
+temp/
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.gif
+
+# Logs
+logs/
+*.log
+
+# Backups
+backups/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Config (?? ????? ??? ??????? ?????)
+*.env
+.env.local
+config.local.yaml
