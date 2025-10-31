@@ -120,6 +120,16 @@ ls -lh ComfyUI/output/
 - **Detailed setup**: `COMFYUI_README.md`
 - **All scripts**: Documented with inline comments
 - **Notebook guide**: `comfyui_setup.ipynb`
+- **Resources guide**: `RESOURCES.md` - Complete Stable Diffusion resources (Arabic/English)
+
+## 🔗 Related Projects
+
+Explore other Stable Diffusion interfaces:
+
+- **[Stable Diffusion GitHub](https://github.com/Stability-AI/stablediffusion)** - Official repository
+- **[ComfyUI Repository](https://github.com/comfyanonymous/ComfyUI)** - Node-based (this project)
+- **[InvokeAI](https://github.com/invoke-ai/InvokeAI)** - Professional web UI
+- **[AUTOMATIC1111 WebUI](https://github.com/AUTOMATIC1111/stable-diffusion-webui)** - Most popular web interface
 
 ## ?? System Requirements
 

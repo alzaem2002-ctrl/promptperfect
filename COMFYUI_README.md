@@ -197,13 +197,21 @@ python main.py --preview-method auto
 - [ComfyUI Examples](https://comfyanonymous.github.io/ComfyUI_examples/)
 
 ### Community Resources
+
+### Alternative Stable Diffusion UIs
+- **[Stable Diffusion GitHub](https://github.com/Stability-AI/stablediffusion)** - Official Stability AI repository
+- **[ComfyUI Repository](https://github.com/comfyanonymous/ComfyUI)** - Node-based interface (this project)
+- **[InvokeAI Installation](https://github.com/invoke-ai/InvokeAI)** - Professional-grade web interface with powerful features
+- **[AUTOMATIC1111 Web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui)** - Most popular Stable Diffusion web interface
 - [ComfyUI Reddit](https://reddit.com/r/comfyui)
+- [Stable Diffusion Reddit](https://reddit.com/r/StableDiffusion)
 - [Civitai Models](https://civitai.com) - Download more models
 - [OpenArt ComfyUI Workflows](https://openart.ai/workflows)
 
 ### Video Tutorials
 - Search "ComfyUI tutorial" on YouTube
 - Search "AnimateDiff ComfyUI" for animation guides
+- Search "Stable Diffusion beginner guide" for basics
 
 ## ?? Example Use Cases
 
