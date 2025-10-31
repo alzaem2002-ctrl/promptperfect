@@ -1,0 +1,102 @@
+===========================================
+Cell 3: تثبيت الملحقات
+===========================================
+
+%%capture
+%cd {PROJECT_DIR}/ComfyUI/custom_nodes
+!git clone https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved.git
+!git clone https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet.git
+!git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git
+%cd ComfyUI-VideoHelperSuite
+!pip install -r requirements.txt
+print("✓ تم تثبيت جميع الملحقات")
+
+===========================================
+Cell 4: إنشاء المجلدات
+===========================================
+
+import os
+%cd {PROJECT_DIR}/ComfyUI
+folders = ["models/checkpoints", "models/vae", "models/animatediff_models", "output"]
+for folder in folders:
+    os.makedirs(folder, exist_ok=True)
+print("✓ تم إنشاء المجلدات")
+
+===========================================
+Cell 5: تحميل النماذج (~5 دقائق)
+===========================================
+
+%cd {PROJECT_DIR}/ComfyUI/models
+print("⏳ تحميل النماذج...")
+!wget -q --show-progress -P checkpoints/ https://huggingface.co/runwayml/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors
+!wget -q --show-progress -P animatediff_models/ https://huggingface.co/guoyww/animatediff/resolve/main/mm_sd_v15_v2.ckpt
+!wget -q --show-progress -P vae/ https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors
+print("✓ تم تحميل جميع النماذج!")
+
+===========================================
+Cell 6: إنشاء Workflow
+===========================================
+
+import json
+workflow = {
+    "1": {"inputs": {"ckpt_name": "v1-5-pruned-emaonly.safetensors"}, "class_type": "CheckpointLoaderSimple"},
+    "2": {"inputs": {"text": "stunning cinematic landscape, mountains, sunrise, 8k, masterpiece", "clip": ["1", 1]}, "class_type": "CLIPTextEncode"},
+    "3": {"inputs": {"text": "low quality, worst quality, blurry, watermark", "clip": ["1", 1]}, "class_type": "CLIPTextEncode"},
+    "4": {"inputs": {"model_name": "mm_sd_v15_v2.ckpt"}, "class_type": "ADE_LoadAnimateDiffModel"},
+    "5": {"inputs": {"batch_size": 16, "width": 512, "height": 512}, "class_type": "EmptyLatentImage"},
+    "6": {"inputs": {"seed": 42, "steps": 20, "cfg": 7.5, "sampler_name": "euler", "scheduler": "normal", "denoise": 1.0, "model": ["4", 0], "positive": ["2", 0], "negative": ["3", 0], "latent_image": ["5", 0]}, "class_type": "KSampler"},
+    "7": {"inputs": {"samples": ["6", 0], "vae": ["1", 2]}, "class_type": "VAEDecode"},
+    "8": {"inputs": {"images": ["7", 0], "frame_rate": 8, "loop_count": 0, "filename_prefix": "animatediff", "format": "video/h264-mp4", "pix_fmt": "yuv420p", "crf": 19, "save_metadata": True}, "class_type": "VHS_VideoCombine"}
+}
+%cd {PROJECT_DIR}
+with open('workflow.json', 'w') as f:
+    json.dump(workflow, f, indent=2)
+print("✓ تم إنشاء workflow.json")
+
+===========================================
+Cell 7: تشغيل ComfyUI مع رابط عام
+===========================================
+
+import subprocess, threading, time
+%cd {PROJECT_DIR}/ComfyUI
+!wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+!dpkg -i cloudflared-linux-amd64.deb
+def run_comfy():
+    subprocess.run(["python", "main.py", "--listen", "0.0.0.0", "--port", "8188"])
+thread = threading.Thread(target=run_comfy, daemon=True)
+thread.start()
+time.sleep(10)
+print("🚀 تشغيل cloudflared...")
+print("⏳ انتظر حتى يظهر رابط https://...")
+!cloudflared tunnel --url http://localhost:8188
+
+===========================================
+Cell 8: تحميل الفيديو (اختياري)
+===========================================
+
+from google.colab import files
+import os
+output_dir = f"{PROJECT_DIR}/ComfyUI/output"
+videos = [f for f in os.listdir(output_dir) if f.endswith('.mp4')]
+print(f"📹 الفيديوهات المتاحة: {len(videos)}")
+for video in videos:
+    print(f"  • {video}")
+if videos:
+    video_path = os.path.join(output_dir, videos[-1])
+    print(f"\n⏬ تحميل: {videos[-1]}")
+    files.download(video_path)
+
+===========================================
+تعليمات:
+===========================================
+
+1. في Google Colab، أضف خلية جديدة (+ Code)
+2. انسخ كود Cell 3 كاملاً (بما في ذلك %%capture)
+3. الصق في الخلية
+4. اضغط ▶️ أو Shift+Enter
+5. كرر للخلايا 4, 5, 6, 7, 8
+
+⚡ هام: Cell 5 سيستغرق ~5 دقائق (تحميل 6GB)
+⚡ هام: Cell 7 سيعطيك رابط للوصول من iPad!
+
+🎉 بعد Cell 7، افتح الرابط من Safari وابدأ التوليد!
