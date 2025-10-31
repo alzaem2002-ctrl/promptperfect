@@ -1,0 +1,65 @@
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║   📥 تعليمات تحميل الملفات من المشروع                      ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+📍 أنت الآن في: /workspace
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📦 الملفات المطلوبة لـ Google Colab
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣  ComfyUI_AnimateDiff_Colab.ipynb      (18 KB)
+    └─ الملف الرئيسي - Jupyter Notebook
+
+2️⃣  animatediff_workflow_colab.json      (5.6 KB)
+    └─ Workflow جاهز للاستخدام
+
+3️⃣  COLAB_QUICK_START.md                 (3.8 KB)
+    └─ دليل البدء السريع
+
+4️⃣  README_Colab.md                      (6.0 KB)
+    └─ الدليل الشامل
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💻 طريقة التحميل
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📂 إذا كنت تستخدم VS Code/Cursor:
+   1. افتح File Explorer
+   2. ابحث عن الملفات في /workspace
+   3. انقر بالزر الأيمن → Download
+
+📂 إذا كنت على Terminal:
+   استخدم أحد هذه الأوامر حسب نظامك:
+
+   # Linux/Mac:
+   cp /workspace/ComfyUI_AnimateDiff_Colab.ipynb ~/Downloads/
+   cp /workspace/animatediff_workflow_colab.json ~/Downloads/
+   cp /workspace/COLAB_QUICK_START.md ~/Downloads/
+   cp /workspace/README_Colab.md ~/Downloads/
+
+   # أو استخدم scp للتحميل من remote:
+   scp user@server:/workspace/ComfyUI_AnimateDiff_Colab.ipynb .
+   scp user@server:/workspace/animatediff_workflow_colab.json .
+
+📂 إذا كنت في بيئة سحابية:
+   استخدم واجهة الملفات في البيئة
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 بعد التحميل
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. افتح HOW_TO_USE_COLAB.md
+2. اتبع التعليمات خطوة بخطوة
+3. ارفع ComfyUI_AnimateDiff_Colab.ipynb على Colab
+4. ابدأ الإبداع! 🎬
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ جميع الملفات جاهزة في /workspace
+
+🌐 التالي: ارفعها على https://colab.research.google.com/
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
