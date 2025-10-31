@@ -1,0 +1,7 @@
+# ComfyUI AnimateDiff Requirements
+# Core dependencies will be installed from ComfyUI's requirements.txt
+# Additional dependencies for this project
+
+ipywidgets>=8.0.0
+requests>=2.31.0
+tqdm>=4.65.0
