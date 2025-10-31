@@ -1,0 +1,23 @@
+[Unit]
+Description=ComfyUI - AI Image Generation Server
+After=network.target
+
+[Service]
+Type=simple
+User=YOUR_USERNAME
+WorkingDirectory=/path/to/comfyui/ComfyUI
+Environment="PATH=/path/to/comfyui/ComfyUI/venv/bin:/usr/local/bin:/usr/bin:/bin"
+ExecStart=/path/to/comfyui/ComfyUI/venv/bin/python main.py --listen --port 8188
+Restart=always
+RestartSec=10
+
+# ???? ?? ??????? ??????? (???????)
+# MemoryMax=8G
+# CPUQuota=400%
+
+# ???????
+StandardOutput=append:/var/log/comfyui.log
+StandardError=append:/var/log/comfyui-error.log
+
+[Install]
+WantedBy=multi-user.target
