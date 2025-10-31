@@ -1,0 +1,30 @@
+# Core dependencies for ComfyUI
+torch>=2.0.0
+torchvision
+torchaudio
+xformers
+einops
+transformers>=4.25.1
+safetensors>=0.3.0
+accelerate
+diffusers
+omegaconf
+pytorch_lightning
+kornia
+spandrel
+soundfile
+pillow
+numpy
+scipy
+requests
+psutil
+pyyaml
+tqdm
+
+# For interactive widgets (optional)
+ipywidgets
+jupyterlab
+
+# For API integration (optional)
+aiohttp
+websockets
