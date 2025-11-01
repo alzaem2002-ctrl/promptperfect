@@ -86,9 +86,17 @@
 		"lint": "eslint src --ext ts",
 		"test": "jest",
 		"test:watch": "jest --watch",
+		"test:coverage": "jest --coverage",
 		"pretest": "npm run lint",
 		"postcompile": "npm test",
-		"build-and-test": "npm run compile && npm run lint && npm test"
+		"build-and-test": "npm run compile && npm run lint && npm test",
+		"test:analyze": "node scripts/analyze-tests.js",
+		"test:fix": "node scripts/auto-fix.js",
+		"test:performance": "node scripts/performance-monitor.js",
+		"test:coverage-check": "node scripts/check-coverage.js",
+		"test:suggest": "node scripts/suggest-improvements.js",
+		"test:report": "node scripts/generate-report.js",
+		"test:self-improve": "npm run test:coverage && npm run test:analyze && npm run test:performance && npm run test:suggest && npm run test:report"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.3",
