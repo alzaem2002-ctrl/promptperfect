@@ -1,0 +1,4 @@
+{"total": {"lines":{"total":124,"covered":41,"skipped":0,"pct":33.06},"statements":{"total":127,"covered":42,"skipped":0,"pct":33.07},"functions":{"total":25,"covered":7,"skipped":0,"pct":28},"branches":{"total":53,"covered":22,"skipped":0,"pct":41.5},"branchesTrue":{"total":0,"covered":0,"skipped":0,"pct":"Unknown"}}
+,"/workspace/src/extension.ts": {"lines":{"total":97,"covered":38,"skipped":0,"pct":39.17},"functions":{"total":17,"covered":7,"skipped":0,"pct":41.17},"statements":{"total":99,"covered":39,"skipped":0,"pct":39.39},"branches":{"total":44,"covered":22,"skipped":0,"pct":50}}
+,"/workspace/src/settingsView.ts": {"lines":{"total":27,"covered":3,"skipped":0,"pct":11.11},"functions":{"total":8,"covered":0,"skipped":0,"pct":0},"statements":{"total":28,"covered":3,"skipped":0,"pct":10.71},"branches":{"total":9,"covered":0,"skipped":0,"pct":0}}
+}

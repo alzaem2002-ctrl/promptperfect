@@ -28,3 +28,15 @@ yarn.lock
 
 # my files
 hideme/*
+
+# Self-Improving Test Agent generated files
+.test-history/
+.performance-metrics/
+test-results.json
+test-analysis.json
+auto-fix-report.json
+performance-report.json
+coverage-report.json
+improvement-report.md
+improvement-suggestions.md
+test-stubs.md
