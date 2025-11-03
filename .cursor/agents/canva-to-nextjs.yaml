@@ -1,0 +1,385 @@
+name: ?? Canva?Next.js One-Click Builder & Publisher
+description: |
+  ????? ??????? ??????? ????? ?????:
+  ? ????? ???? Canva ??????
+  ? ????? ????? Next.js + Tailwind RTL
+  ? ???? ??? ZIP
+  ? ???? ??? GitHub Releases
+  ? ????? GitHub Pages
+  ? ????? ????? ??????? ?? SendGrid
+author: "????????? ??????? ???????"
+
+triggers:
+  - manual
+  - on_command: "oneclick-publish"
+
+inputs:
+  - name: target_url
+    type: string
+    default: "https://muqtasr.my.canva.site/m3lem-suliman21436"
+  - name: github_repo
+    type: string
+    default: "alzaem2002-ctrl/promptperfect"
+  - name: github_token
+    type: string
+    description: "GitHub PAT ??????? repo + pages"
+  - name: notify_email
+    type: string
+    default: "you@example.com"
+  - name: sendgrid_key
+    type: string
+    description: "SendGrid API Key (???????)"
+
+tasks:
+  - name: one_click_full_pipeline
+    steps:
+      - name: crawl_site
+        run: |
+          mkdir -p rebuild/html
+          wget --recursive --no-clobber --page-requisites --adjust-extension \
+               --convert-links --span-hosts \
+               --domains muqtasr.my.canva.site,cdn.canva.com \
+               --no-parent {{inputs.target_url}} -P rebuild/html
+      - name: create_nextjs_project
+        run: |
+          npx create-next-app@latest site-clone --typescript --tailwind --eslint --app --src-dir --no-install
+      - name: generate_pages
+        run: |
+          node <<'EOF'
+          const fs = require('fs');
+          const path = require('path');
+          const { execSync } = require('child_process');
+          
+          // Find all HTML files
+          let htmlFiles = [];
+          function findHtmlFiles(dir) {
+            const files = fs.readdirSync(dir);
+            for (const file of files) {
+              const filePath = path.join(dir, file);
+              const stat = fs.statSync(filePath);
+              if (stat.isDirectory()) {
+                findHtmlFiles(filePath);
+              } else if (file.endsWith('.html')) {
+                htmlFiles.push(filePath);
+              }
+            }
+          }
+          
+          findHtmlFiles('rebuild/html');
+          
+          const pages = [];
+          const assets = new Set();
+          
+          htmlFiles.forEach(f => {
+            const h = fs.readFileSync(f, 'utf8');
+            const titleMatch = h.match(/<title>(.*?)<\/title>/);
+            const title = titleMatch ? titleMatch[1] : path.basename(f, '.html');
+            const bodyMatch = h.match(/<body[^>]*>([\s\S]*)<\/body>/i);
+            const body = bodyMatch ? bodyMatch[1] : h;
+            
+            // Extract images
+            const imgMatches = h.matchAll(/<img[^>]+src="([^"]+)"/g);
+            for (const match of imgMatches) {
+              assets.add(match[1]);
+            }
+            
+            pages.push({ title, body, path: f });
+          });
+          
+          fs.mkdirSync('rebuild', { recursive: true });
+          fs.writeFileSync('rebuild/structure.json', JSON.stringify({ pages, assets: [...assets] }, null, 2));
+          
+          // Create pages directory
+          fs.mkdirSync('site-clone/src/app/pages', { recursive: true });
+          
+          // Generate Next.js pages
+          pages.forEach((p, i) => {
+            const slug = i === 0 ? 'page' : p.title.replace(/\s+/g, '-').toLowerCase().replace(/[^a-z0-9-]/g, '');
+            const componentName = slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+            
+            const escapedBody = p.body
+              .replace(/\\/g, '\\\\')
+              .replace(/`/g, '\\`')
+              .replace(/\${/g, '\\${');
+            
+            fs.writeFileSync(
+              `site-clone/src/app/${slug}/page.tsx`,
+              `import React from 'react';
+
+export default function ${componentName}() {
+  return (
+    <main className="prose max-w-4xl mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-4">${p.title}</h1>
+      <div dangerouslySetInnerHTML={{ __html: \`${escapedBody}\` }} />
+    </main>
+  );
+}
+`
+            );
+          });
+          
+          // Create root page that redirects to first page
+          if (pages.length > 0) {
+            fs.writeFileSync(
+              'site-clone/src/app/page.tsx',
+              `import { redirect } from 'next/navigation';
+
+export default function Home() {
+  redirect('/page');
+}
+`
+            );
+          }
+          EOF
+      - name: setup_tailwind
+        run: |
+          cat > site-clone/src/app/globals.css <<'EOF'
+          @tailwind base;
+          @tailwind components;
+          @tailwind utilities;
+          
+          body {
+            direction: rtl;
+            font-family: "Tajawal", sans-serif;
+          }
+          EOF
+      - name: zip_project
+        run: |
+          cd site-clone && zip -r ../site-clone.zip . && cd ..
+      - name: upload_to_github
+        run: |
+          node <<'EOF'
+          const fs = require('fs');
+          const https = require('https');
+          const http = require('http');
+          
+          const token = "{{inputs.github_token}}";
+          const repo = "{{inputs.github_repo}}";
+          const zipPath = 'site-clone.zip';
+          
+          if (!fs.existsSync(zipPath)) {
+            console.error('ZIP file not found:', zipPath);
+            process.exit(1);
+          }
+          
+          const zipBuffer = fs.readFileSync(zipPath);
+          const tag = 'auto-' + new Date().toISOString().split('T')[0];
+          
+          function makeRequest(url, options, data) {
+            return new Promise((resolve, reject) => {
+              const urlObj = new URL(url);
+              const requestModule = urlObj.protocol === 'https:' ? https : http;
+              
+              const req = requestModule.request(url, options, (res) => {
+                let body = '';
+                res.on('data', (chunk) => body += chunk);
+                res.on('end', () => {
+                  try {
+                    resolve({ status: res.statusCode, data: JSON.parse(body), headers: res.headers });
+                  } catch (e) {
+                    resolve({ status: res.statusCode, data: body, headers: res.headers });
+                  }
+                });
+              });
+              
+              req.on('error', reject);
+              if (data) {
+                req.write(data);
+              }
+              req.end();
+            });
+          }
+          
+          async function createRelease() {
+            const releaseUrl = `https://api.github.com/repos/${repo}/releases`;
+            const releaseData = JSON.stringify({
+              tag_name: tag,
+              name: 'Auto Build ' + new Date().toISOString(),
+              draft: false,
+              prerelease: false
+            });
+            
+            const release = await makeRequest(releaseUrl, {
+              method: 'POST',
+              headers: {
+                'Authorization': `token ${token}`,
+                'Content-Type': 'application/json',
+                'User-Agent': 'Node.js'
+              }
+            }, releaseData);
+            
+            if (release.status >= 400) {
+              throw new Error('Failed to create release: ' + JSON.stringify(release.data));
+            }
+            
+            return release.data;
+          }
+          
+          async function uploadAsset(release) {
+            const uploadUrl = release.upload_url.split('{')[0] + `?name=site-clone.zip`;
+            const urlObj = new URL(uploadUrl);
+            
+            const asset = await makeRequest(uploadUrl, {
+              method: 'POST',
+              headers: {
+                'Authorization': `token ${token}`,
+                'Content-Type': 'application/zip',
+                'User-Agent': 'Node.js'
+              }
+            }, zipBuffer);
+            
+            if (asset.status >= 400) {
+              throw new Error('Failed to upload asset: ' + JSON.stringify(asset.data));
+            }
+            
+            return asset.data;
+          }
+          
+          async function enablePages() {
+            const pagesUrl = `https://api.github.com/repos/${repo}/pages`;
+            const pagesData = JSON.stringify({
+              source: {
+                branch: 'main',
+                path: '/'
+              }
+            });
+            
+            try {
+              const pagesRes = await makeRequest(pagesUrl, {
+                method: 'POST',
+                headers: {
+                  'Authorization': `token ${token}`,
+                  'Content-Type': 'application/json',
+                  'User-Agent': 'Node.js'
+                }
+              }, pagesData);
+              
+              return pagesRes.status < 400 ? pagesRes.data : null;
+            } catch (e) {
+              console.log('Pages might already be enabled:', e.message);
+              return null;
+            }
+          }
+          
+          (async () => {
+            try {
+              const release = await createRelease();
+              console.log('? Release created:', release.html_url);
+              
+              const asset = await uploadAsset(release);
+              console.log('? Asset uploaded:', asset.browser_download_url);
+              
+              const pages = await enablePages();
+              let pagesUrl = `https://${repo.split('/')[0]}.github.io/${repo.split('/')[1]}/`;
+              
+              if (pages && pages.html_url) {
+                pagesUrl = pages.html_url;
+              }
+              
+              const result = {
+                release: release.html_url,
+                zip: asset.browser_download_url,
+                site: pagesUrl,
+                tag: tag
+              };
+              
+              fs.writeFileSync('publish.json', JSON.stringify(result, null, 2));
+              console.log('? Results saved to publish.json');
+            } catch (error) {
+              console.error('? Error:', error.message);
+              process.exit(1);
+            }
+          })();
+          EOF
+      - name: send_notification
+        run: |
+          node <<'EOF'
+          const fs = require('fs');
+          const https = require('https');
+          const http = require('http');
+          
+          const sendgridKey = "{{inputs.sendgrid_key}}";
+          const notifyEmail = "{{inputs.notify_email}}";
+          
+          if (!fs.existsSync('publish.json')) {
+            console.log('publish.json not found, skipping notification');
+            process.exit(0);
+          }
+          
+          const data = JSON.parse(fs.readFileSync('publish.json', 'utf8'));
+          
+          if (!sendgridKey || sendgridKey.trim() === '') {
+            console.log('No SendGrid key provided, skipping email notification');
+            console.log('?? Results:', JSON.stringify(data, null, 2));
+            process.exit(0);
+          }
+          
+          function makeRequest(url, options, data) {
+            return new Promise((resolve, reject) => {
+              const urlObj = new URL(url);
+              const requestModule = urlObj.protocol === 'https:' ? https : http;
+              
+              const req = requestModule.request(url, options, (res) => {
+                let body = '';
+                res.on('data', (chunk) => body += chunk);
+                res.on('end', () => {
+                  resolve({ status: res.statusCode, data: body });
+                });
+              });
+              
+              req.on('error', reject);
+              if (data) {
+                req.write(data);
+              }
+              req.end();
+            });
+          }
+          
+          const emailData = JSON.stringify({
+            personalizations: [{
+              to: [{ email: notifyEmail }]
+            }],
+            from: {
+              email: "no-reply@nextjs-builder.ai",
+              name: "Canva?Next.js Builder"
+            },
+            subject: "? ?? ????? ????? ????? ??? GitHub",
+            content: [{
+              type: "text/html",
+              value: `
+                <div style="font-family: Arial, sans-serif; direction: rtl; text-align: right;">
+                  <h2>? ?? ?????!</h2>
+                  <p>?? ????? ????? ?? Canva ????? ??? GitHub.</p>
+                  <p><strong>???? ZIP:</strong> <a href="${data.zip}">${data.zip}</a></p>
+                  <p><strong>??????:</strong> <a href="${data.site}">${data.site}</a></p>
+                  <p><strong>Release:</strong> <a href="${data.release}">${data.release}</a></p>
+                  <p><strong>Tag:</strong> ${data.tag}</p>
+                </div>
+              `
+            }]
+          });
+          
+          makeRequest('https://api.sendgrid.com/v3/mail/send', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${sendgridKey}`,
+              'Content-Type': 'application/json',
+              'User-Agent': 'Node.js'
+            }
+          }, emailData)
+            .then(res => {
+              if (res.status >= 200 && res.status < 300) {
+                console.log('?? ?? ????? ??????? ?????');
+              } else {
+                console.error('? ??? ????? ???????:', res.status, res.data);
+              }
+            })
+            .catch(err => {
+              console.error('? ??? ?? ????? ???????:', err.message);
+            });
+          EOF
+
+outputs:
+  - name: github_result
+    type: file
+    path: ./publish.json
