@@ -2,10 +2,21 @@
 
 ## How to use
 
-There are two command prompts.
+There are three main command prompts:
 
+### Prompt Perfect Commands:
 -   _Open Editors_: This will give you a back tick delimited block of text of all open text based files in your editor windows
 -   _Open Editors and ASCII Tree_: Same as open editors, but at the top is an ascii representation of your source tree, and it ignores anything from .gitignore.
+
+### 🔥 NEW: Canva→Next.js Builder:
+-   _Canva→Next.js: One-Click Builder_: A complete automation pipeline that:
+    - Crawls and downloads a Canva website
+    - Converts it to a modern Next.js + Tailwind project with RTL support
+    - Creates a ZIP package
+    - Uploads to GitHub Releases automatically
+    - Sends email notification with download link
+    
+    👉 See [CANVA_BUILDER_README.md](./CANVA_BUILDER_README.md) for detailed documentation
 
 There are also some settings in the Activity Bar pane. You can set folder depth, max token length (so you don't include too many files), and an "Additional Instructions" text area, which I have found useful. You can detele the contents, or edit as you like.
 
@@ -27,6 +38,7 @@ Prompt Perfect is like having a personal assistant for your AI conversations. It
 
 -   **📜 "Open Editors" Command**: Captures the essence of your current work by bundling all open files into one glorious prompt.
 -   **🌳 "Open Editors and ASCII Tree" Command**: Same as above, but with a beautiful ASCII art representation of your project structure. It's like a bonsai tree for your code!
+-   **🔥 "Canva→Next.js Builder" Command**: One-click pipeline to convert Canva sites to Next.js projects with GitHub deployment!
 -   **🎨 Stylish Activity Bar Icon**: Because looks matter, even in coding.
 -   **⚙️ Customizable Settings**: Tweak it to your heart's content!
 -   **📋 Auto-Copy to Clipboard**: Because every second counts when you're in the zone.
