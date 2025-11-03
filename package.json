@@ -28,6 +28,10 @@
 			{
 				"command": "prompt-perfect.openEditorsAndASCIITree",
 				"title": "Prompt Perfect: Open Editors and ASCII Tree"
+			},
+			{
+				"command": "prompt-perfect.canvaBuilder",
+				"title": "?? Canva?Next.js: One-Click Builder"
 			}
 		],
 		"viewsContainers": {
@@ -75,6 +79,21 @@
 					"type": "string",
 					"default": "If there is a file imported/included that I forgot to include or some other file you think I may have already created but have not included, please ask for that file before starting to generate a response.",
 					"description": "Additional instructions for prompt generation"
+				},
+				"promptPerfect.canvaBuilder.defaultTargetUrl": {
+					"type": "string",
+					"default": "https://muqtasr.my.canva.site/",
+					"description": "Default Canva site URL for the builder"
+				},
+				"promptPerfect.canvaBuilder.defaultGithubRepo": {
+					"type": "string",
+					"default": "",
+					"description": "Default GitHub repository (username/repo)"
+				},
+				"promptPerfect.canvaBuilder.defaultEmail": {
+					"type": "string",
+					"default": "",
+					"description": "Default email for notifications"
 				}
 			}
 		}
@@ -107,6 +126,10 @@
 		"vscode-test": "^1.5.2"
 	},
 	"dependencies": {
-		"ignore": "^5.3.2"
+		"@types/archiver": "^7.0.0",
+		"@types/node-fetch": "^2.6.13",
+		"archiver": "^7.0.1",
+		"ignore": "^5.3.2",
+		"node-fetch": "^2.7.0"
 	}
 }

@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import ignore from 'ignore';
 import { SettingsViewProvider } from './settingsView';
+import { runCanvaBuilderCommand } from './canvaBuilder';
 
 interface TreeNode {
 	name: string;
@@ -35,9 +36,17 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	);
 
+	const canvaBuilderDisposable = vscode.commands.registerCommand(
+		'prompt-perfect.canvaBuilder',
+		() => {
+			runCanvaBuilderCommand();
+		}
+	);
+
 	context.subscriptions.push(
 		openEditorsDisposable,
-		openEditorsAndASCIITreeDisposable
+		openEditorsAndASCIITreeDisposable,
+		canvaBuilderDisposable
 	);
 }
 
