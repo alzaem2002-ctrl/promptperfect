@@ -53,6 +53,28 @@ Prompt Perfect is here to make your coding life a little bit easier and a lot mo
 
 Install Prompt Perfect today and make your prompts so perfect, even Shakespeare would be jealous!
 
+## ⚡️ Bonus: Canva→Next.js Builder Agent
+
+This repository also includes a powerful Cursor Agent that automates the complete process of converting Canva sites to Next.js projects and publishing them to GitHub!
+
+**Features:**
+- 🔄 One-click conversion from Canva to Next.js
+- 🎨 Automatic RTL support for Arabic content
+- 📦 Automatic GitHub Releases upload
+- 🌐 Automatic GitHub Pages deployment
+- 📧 Email notifications (optional)
+
+**Location:** `.cursor/agents/canva-to-nextjs.yaml`
+
+For detailed setup and usage instructions, see:
+- 📖 [README (Arabic)](.cursor/agents/README.md)
+- 📖 [README (English)](.cursor/agents/README_EN.md)
+
+**Quick Start:**
+1. Set up your GitHub token with `repo`, `pages:write`, and `workflow` permissions
+2. Optionally set up SendGrid API key for email notifications
+3. Run the agent via command `oneclick-publish` or manually from Cursor's Agents menu
+
 ---
 
 _Remember: With great prompts comes great responsibility. Use wisely, and may the code be with you!_ 🧙‍♂️✨
