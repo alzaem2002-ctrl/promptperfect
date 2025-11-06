@@ -122,19 +122,72 @@
 
 ---
 
+## 👤 Found Accounts
+
+### Instagram Account
+
+- **Username:** __tofah__
+- **URL:** [instagram.com/__tofah__](https://instagram.com/__tofah__)
+- **Status:** ✅ Found
+- **Profile Info:**
+  - Display Name: (To be filled)
+  - Bio: (To be filled)
+  - Followers: (To be filled)
+  - Following: (To be filled)
+  - Posts: (To be filled)
+
+### TikTok Account
+
+- **Username:** _lemoonah_
+- **URL:** [tiktok.com/@_lemoonah_](https://tiktok.com/@_lemoonah_)
+- **Status:** ✅ Found
+- **Profile Info:**
+  - Display Name: (To be filled)
+  - Bio: (To be filled)
+  - Followers: (To be filled)
+  - Following: (To be filled)
+  - Likes: (To be filled)
+
+---
+
+## 💬 Messages
+
+*No messages found yet. Add messages here after collection.*
+
+**Example format:**
+- **Date:** YYYY-MM-DD
+- **Platform:** Instagram/TikTok/etc.
+- **Content:** Message text
+- **Sender:** Username
+- **Attachments:** (if any)
+
+---
+
+## 🖼️ Available Images
+
+*No images found yet. Add image URLs here after collection.*
+
+**Example format:**
+- **Description:** Profile picture / Post image
+- **URL:** Direct link to image
+- **Source:** Instagram / TikTok / etc.
+
+---
+
 ## 📝 Notes
 
 - **Educational Purpose Only** - Respect Privacy
 - All searches are currently in "pending" status
 - Use the provided links to perform actual searches on each platform
 - Results should be documented manually after performing searches
+- Fill in account details, messages, and images as you collect them
 
 ---
 
 ## 📁 Related Files
 
-- **JSON Report:** `osint_report_20251106_183721.json`
-- **HTML Report:** `osint_report_20251106_183721.html`
+- **JSON Report:** `osint_report_20251106_185645.json`
+- **HTML Report:** `osint_report_20251106_185645.html`
 - **Python Tool:** `osint_tool.py`
 
 ---

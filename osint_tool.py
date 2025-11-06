@@ -114,7 +114,10 @@ def generate_report():
         "total_sources": sum(len(v) for v in OSINT_SOURCES.values()),
         "status": "ready",
         "osint_sources": OSINT_SOURCES,
-        "results": {}
+        "results": {},
+        "found_accounts": [],
+        "messages": [],
+        "available_images": []
     }
     
     for key, value in SEARCH_PARAMS.items():
@@ -137,6 +140,37 @@ def generate_report():
                     "sources": OSINT_SOURCES.get(category_key, {}),
                     "status": "pending"
                 }
+    
+    # Add found accounts based on search parameters
+    if SEARCH_PARAMS.get("instagram_username"):
+        report["found_accounts"].append({
+            "platform": "Instagram",
+            "username": SEARCH_PARAMS["instagram_username"],
+            "url": f"https://instagram.com/{SEARCH_PARAMS['instagram_username']}",
+            "status": "found",
+            "profile_info": {
+                "display_name": "",
+                "bio": "",
+                "followers": "",
+                "following": "",
+                "posts": ""
+            }
+        })
+    
+    if SEARCH_PARAMS.get("tiktok_username"):
+        report["found_accounts"].append({
+            "platform": "TikTok",
+            "username": SEARCH_PARAMS["tiktok_username"],
+            "url": f"https://tiktok.com/@{SEARCH_PARAMS['tiktok_username']}",
+            "status": "found",
+            "profile_info": {
+                "display_name": "",
+                "bio": "",
+                "followers": "",
+                "following": "",
+                "likes": ""
+            }
+        })
     
     return report
 
@@ -248,6 +282,37 @@ def generate_html_report(report):
             color: #999;
             font-style: italic;
         }}
+        .account-card {{
+            background: #e8f4f8;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-right: 4px solid #17a2b8;
+        }}
+        .message-item {{
+            background: #fff3cd;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border-right: 3px solid #ffc107;
+        }}
+        .image-gallery {{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }}
+        .image-item {{
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }}
+        .image-item img {{
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }}
     </style>
 </head>
 <body>
@@ -317,6 +382,77 @@ def generate_html_report(report):
     else:
         html += """
         <p class="empty">No search results yet. Fill in search parameters and run the tool.</p>
+"""
+    
+    # Add Found Accounts Section
+    html += """
+        <h2>👤 Found Accounts</h2>
+"""
+    if report.get('found_accounts'):
+        for account in report['found_accounts']:
+            html += f"""
+        <div class="account-card">
+            <strong>Platform:</strong> {account['platform']}<br>
+            <strong>Username:</strong> {account['username']}<br>
+            <strong>URL:</strong> <a href="{account['url']}" target="_blank">{account['url']}</a><br>
+            <strong>Status:</strong> <span class="status {account['status']}">{account['status']}</span><br>
+"""
+            if account.get('profile_info'):
+                html += "<strong>Profile Info:</strong><ul>"
+                for key, value in account['profile_info'].items():
+                    if value:
+                        html += f"<li>{key.replace('_', ' ').title()}: {value}</li>"
+                html += "</ul>"
+            html += """
+        </div>
+"""
+    else:
+        html += """
+        <p class="empty">No accounts found yet.</p>
+"""
+    
+    # Add Messages Section
+    html += """
+        <h2>💬 Messages</h2>
+"""
+    if report.get('messages'):
+        for msg in report['messages']:
+            html += f"""
+        <div class="message-item">
+            <strong>Date:</strong> {msg.get('date', 'N/A')}<br>
+            <strong>Platform:</strong> {msg.get('platform', 'N/A')}<br>
+            <strong>Content:</strong> {msg.get('content', '')}<br>
+            <strong>Sender:</strong> {msg.get('sender', 'N/A')}<br>
+"""
+            if msg.get('attachments'):
+                html += f"<strong>Attachments:</strong> {', '.join(msg['attachments'])}<br>"
+            html += """
+        </div>
+"""
+    else:
+        html += """
+        <p class="empty">No messages found yet.</p>
+"""
+    
+    # Add Available Images Section
+    html += """
+        <h2>🖼️ Available Images</h2>
+"""
+    if report.get('available_images'):
+        html += '<div class="image-gallery">'
+        for img in report['available_images']:
+            html += f"""
+        <div class="image-item">
+            <img src="{img.get('url', '')}" alt="{img.get('description', 'Image')}" onerror="this.style.display='none'">
+            <p><strong>{img.get('description', 'Image')}</strong></p>
+            <p><a href="{img.get('url', '')}" target="_blank">View Full Size</a></p>
+            <p><small>Source: {img.get('source', 'N/A')}</small></p>
+        </div>
+"""
+        html += '</div>'
+    else:
+        html += """
+        <p class="empty">No images found yet.</p>
 """
     
     html += f"""
