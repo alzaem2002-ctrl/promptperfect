@@ -186,9 +186,10 @@
 
 ## 📁 Related Files
 
-- **JSON Report:** `osint_report_20251106_185645.json`
-- **HTML Report:** `osint_report_20251106_185645.html`
+- **JSON Report:** `osint_report_20251106_185814.json` (Latest)
+- **HTML Report:** `osint_report_20251106_185814.html` (Latest)
 - **Python Tool:** `osint_tool.py`
+- **Helper Script:** `add_to_report.py` (To add accounts, messages, images)
 
 ---
 
