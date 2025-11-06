@@ -44,6 +44,20 @@ def add_message(report, date, platform, content, sender, attachments=None):
     report["messages"].append(message)
     print(f"✅ Added message from {sender} on {platform}")
 
+def add_connected_account(report, platform, username, url, connection_type, profile_info=None, notes=None):
+    """Add a connected/related account to the report"""
+    account = {
+        "platform": platform,
+        "username": username,
+        "url": url,
+        "connection_type": connection_type,
+        "status": "found",
+        "profile_info": profile_info or {},
+        "notes": notes or ""
+    }
+    report["connected_accounts"].append(account)
+    print(f"✅ Added connected account: {platform} - {username} ({connection_type})")
+
 def add_image(report, url, description, source):
     """Add an image to the report"""
     image = {
@@ -99,6 +113,17 @@ def main():
         platform="Instagram",
         content="Example message content",
         sender="__tofah__"
+    )
+    
+    # Example: Add a connected account (mutual follower, similar username, etc.)
+    add_connected_account(
+        report,
+        platform="Twitter",
+        username="example_user",
+        url="https://twitter.com/example_user",
+        connection_type="Mutual Follower",
+        profile_info={"display_name": "Example User", "followers": "1K"},
+        notes="Found through mutual followers analysis on Instagram"
     )
     
     # Example: Add an image

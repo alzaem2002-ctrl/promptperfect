@@ -116,6 +116,7 @@ def generate_report():
         "osint_sources": OSINT_SOURCES,
         "results": {},
         "found_accounts": [],
+        "connected_accounts": [],
         "messages": [],
         "available_images": []
     }
@@ -171,6 +172,10 @@ def generate_report():
                 "likes": ""
             }
         })
+    
+    # Add connected/related accounts section (to be filled with discovered accounts)
+    # This section will contain accounts found through mutual connections, 
+    # similar usernames, phone number lookups, etc.
     
     return report
 
@@ -409,6 +414,45 @@ def generate_html_report(report):
     else:
         html += """
         <p class="empty">No accounts found yet.</p>
+"""
+    
+    # Add Connected/Related Accounts Section
+    html += """
+        <h2>🔗 Connected/Related Accounts</h2>
+        <p style="color: #666; font-style: italic;">Accounts discovered through mutual connections, similar usernames, phone lookups, or other OSINT methods</p>
+"""
+    if report.get('connected_accounts'):
+        for account in report['connected_accounts']:
+            html += f"""
+        <div class="account-card" style="background: #f0f8ff;">
+            <strong>Platform:</strong> {account.get('platform', 'N/A')}<br>
+            <strong>Username:</strong> {account.get('username', 'N/A')}<br>
+            <strong>URL:</strong> <a href="{account.get('url', '#')}" target="_blank">{account.get('url', 'N/A')}</a><br>
+            <strong>Connection Type:</strong> {account.get('connection_type', 'Unknown')}<br>
+            <strong>Status:</strong> <span class="status {account.get('status', 'unknown')}">{account.get('status', 'unknown')}</span><br>
+"""
+            if account.get('profile_info'):
+                html += "<strong>Profile Info:</strong><ul>"
+                for key, value in account['profile_info'].items():
+                    if value:
+                        html += f"<li>{key.replace('_', ' ').title()}: {value}</li>"
+                html += "</ul>"
+            if account.get('notes'):
+                html += f"<strong>Notes:</strong> {account['notes']}<br>"
+            html += """
+        </div>
+"""
+    else:
+        html += """
+        <p class="empty">No connected accounts found yet. Use OSINT tools to discover related accounts through:
+        <ul style="text-align: right; margin-top: 10px;">
+            <li>Mutual followers/following on social media</li>
+            <li>Phone number reverse lookup</li>
+            <li>Similar username searches</li>
+            <li>Email address associations</li>
+            <li>Cross-platform username matching</li>
+        </ul>
+        </p>
 """
     
     # Add Messages Section

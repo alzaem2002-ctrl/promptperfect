@@ -150,6 +150,27 @@
 
 ---
 
+## 🔗 Connected/Related Accounts
+
+*Accounts discovered through mutual connections, similar usernames, phone lookups, or other OSINT methods*
+
+**How to discover connected accounts:**
+- Mutual followers/following on social media
+- Phone number reverse lookup
+- Similar username searches
+- Email address associations
+- Cross-platform username matching
+
+**Example format:**
+- **Platform:** Twitter/Instagram/Facebook/etc.
+- **Username:** username
+- **URL:** Direct link
+- **Connection Type:** Mutual Follower / Similar Username / Phone Lookup / etc.
+- **Profile Info:** Display name, followers, etc.
+- **Notes:** How this account was discovered
+
+---
+
 ## 💬 Messages
 
 *No messages found yet. Add messages here after collection.*
