@@ -7,10 +7,12 @@ Educational Purpose Only
 import json
 from datetime import datetime
 
-# Empty search parameters (fill these for actual searches)
+# Search parameters
 SEARCH_PARAMS = {
-    "طرفة عبدالعزيز الجبالي ": "",
-    "+966558899680": "",
+    "username": "طرفة عبدالعزيز الجبالي",
+    "phone": "+966558899680",
+    "instagram_username": "__tofah__",
+    "tiktok_username": "_lemoonah_",
     "email": "",
     "domain": "",
     "hash_value": "",
@@ -118,7 +120,7 @@ def generate_report():
     for key, value in SEARCH_PARAMS.items():
         if value:
             category_key = None
-            if "طرفة" in key or "username" in key.lower():
+            if "username" in key.lower() or "instagram" in key.lower() or "tiktok" in key.lower():
                 category_key = "username_search"
             elif "phone" in key.lower() or "+" in key:
                 category_key = "phone_search"
