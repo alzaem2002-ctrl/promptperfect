@@ -16,43 +16,43 @@ SEARCH_PARAMS = {
     "hash_value": "",
 }
 
-# Define all OSINT sources
+# Define all OSINT sources with URLs
 OSINT_SOURCES = {
-    "username_search": [
-        "Sherlock",
-        "WhatsMyName",
-        "Namechk",
-        "CheckUsernames",
-        "Maigret"
-    ],
-    "phone_search": [
-        "PhoneInfoga",
-        "TrueCaller",
-        "WhitePages",
-        "PeopleFinder",
-        "Spokeo"
-    ],
-    "email_search": [
-        "Hunter.io",
-        "RocketReach",
-        "EmailFinder",
-        "Clearbit",
-        "MailboxValidator"
-    ],
-    "domain_search": [
-        "Shodan",
-        "Censys",
-        "WHOIS Lookup",
-        "DNS Dumpster",
-        "SecurityTrails"
-    ],
-    "hash_search": [
-        "VirusTotal",
-        "Have I Been Pwned",
-        "Hybrid Analysis",
-        "Malware.Expert",
-        "AlienVault OTX"
-    ]
+    "username_search": {
+        "Sherlock": "https://github.com/sherlock-project/sherlock",
+        "WhatsMyName": "https://github.com/WebBreacher/WhatsMyName",
+        "Namechk": "https://namechk.com/",
+        "CheckUsernames": "https://checkusernames.com/",
+        "Maigret": "https://github.com/soxoj/maigret"
+    },
+    "phone_search": {
+        "PhoneInfoga": "https://github.com/sundowndev/phoneinfoga",
+        "TrueCaller": "https://www.truecaller.com/",
+        "WhitePages": "https://www.whitepages.com/",
+        "PeopleFinder": "https://www.peoplefinder.com/",
+        "Spokeo": "https://www.spokeo.com/"
+    },
+    "email_search": {
+        "Hunter.io": "https://hunter.io/",
+        "RocketReach": "https://rocketreach.co/",
+        "EmailFinder": "https://www.emailfinder.com/",
+        "Clearbit": "https://clearbit.com/",
+        "MailboxValidator": "https://www.mailboxvalidator.com/"
+    },
+    "domain_search": {
+        "Shodan": "https://www.shodan.io/",
+        "Censys": "https://search.censys.io/",
+        "WHOIS Lookup": "https://whois.net/",
+        "DNS Dumpster": "https://dnsdumpster.com/",
+        "SecurityTrails": "https://securitytrails.com/"
+    },
+    "hash_search": {
+        "VirusTotal": "https://www.virustotal.com/",
+        "Have I Been Pwned": "https://haveibeenpwned.com/",
+        "Hybrid Analysis": "https://www.hybrid-analysis.com/",
+        "Malware.Expert": "https://malware.expert/",
+        "AlienVault OTX": "https://otx.alienvault.com/"
+    }
 }
 
 def display_intro():
@@ -69,8 +69,9 @@ def display_sources():
     print("=" * 50)
     for category, sources in OSINT_SOURCES.items():
         print(f"\n🔍 {category.replace('_', ' ').upper()}:")
-        for i, source in enumerate(sources, 1):
+        for i, (source, url) in enumerate(sources.items(), 1):
             print(f"   {i}. {source}")
+            print(f"      🔗 {url}")
 
 def display_parameters():
     """Display search parameters"""
@@ -110,16 +111,30 @@ def generate_report():
         "sources_configured": len(OSINT_SOURCES),
         "total_sources": sum(len(v) for v in OSINT_SOURCES.values()),
         "status": "ready",
+        "osint_sources": OSINT_SOURCES,
         "results": {}
     }
     
     for key, value in SEARCH_PARAMS.items():
         if value:
-            report["results"][key] = {
-                "search_term": value,
-                "sources": OSINT_SOURCES.get(f"{key.split('_')[0]}_search", []),
-                "status": "pending"
-            }
+            category_key = None
+            if "طرفة" in key or "username" in key.lower():
+                category_key = "username_search"
+            elif "phone" in key.lower() or "+" in key:
+                category_key = "phone_search"
+            elif "email" in key.lower():
+                category_key = "email_search"
+            elif "domain" in key.lower():
+                category_key = "domain_search"
+            elif "hash" in key.lower():
+                category_key = "hash_search"
+            
+            if category_key:
+                report["results"][key] = {
+                    "search_term": value,
+                    "sources": OSINT_SOURCES.get(category_key, {}),
+                    "status": "pending"
+                }
     
     return report
 
