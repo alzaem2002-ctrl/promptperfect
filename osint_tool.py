@@ -142,10 +142,193 @@ def generate_report():
 
 def save_report(report):
     """Save report to file"""
-    filename = f"osint_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-    with open(filename, 'w') as f:
-        json.dump(report, f, indent=2)
-    print(f"\n✅ Report saved to: {filename}")
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    json_filename = f"osint_report_{timestamp}.json"
+    html_filename = f"osint_report_{timestamp}.html"
+    
+    # Save JSON
+    with open(json_filename, 'w', encoding='utf-8') as f:
+        json.dump(report, f, indent=2, ensure_ascii=False)
+    print(f"\n✅ JSON Report saved to: {json_filename}")
+    
+    # Save HTML
+    html_content = generate_html_report(report)
+    with open(html_filename, 'w', encoding='utf-8') as f:
+        f.write(html_content)
+    print(f"✅ HTML Report saved to: {html_filename}")
+
+def generate_html_report(report):
+    """Generate HTML version of the report"""
+    html = f"""<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSINT Report - {report['timestamp']}</title>
+    <style>
+        body {{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }}
+        .container {{
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 30px;
+        }}
+        h1 {{
+            color: #667eea;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }}
+        h2 {{
+            color: #764ba2;
+            margin-top: 30px;
+            border-right: 4px solid #764ba2;
+            padding-right: 10px;
+        }}
+        .search-param {{
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-right: 4px solid #667eea;
+        }}
+        .search-param strong {{
+            color: #667eea;
+        }}
+        .source-list {{
+            list-style: none;
+            padding: 0;
+        }}
+        .source-item {{
+            background: #f8f9fa;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border-right: 3px solid #764ba2;
+        }}
+        .source-item a {{
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }}
+        .source-item a:hover {{
+            color: #764ba2;
+            text-decoration: underline;
+        }}
+        .status {{
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }}
+        .status.ready {{
+            background: #28a745;
+            color: white;
+        }}
+        .status.pending {{
+            background: #ffc107;
+            color: #333;
+        }}
+        .timestamp {{
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 20px;
+        }}
+        .empty {{
+            color: #999;
+            font-style: italic;
+        }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 OSINT Multi-Source Search Report</h1>
+        <p class="timestamp">Generated: {report['timestamp']}</p>
+        
+        <h2>📋 Search Parameters</h2>
+"""
+    
+    for key, value in report['search_parameters'].items():
+        if value:
+            html += f"""
+        <div class="search-param">
+            <strong>{key.replace('_', ' ').title()}:</strong> {value}
+        </div>
+"""
+        else:
+            html += f"""
+        <div class="search-param empty">
+            <strong>{key.replace('_', ' ').title()}:</strong> (Empty)
+        </div>
+"""
+    
+    html += """
+        <h2>🔗 OSINT Sources & Links</h2>
+"""
+    
+    for category, sources in report['osint_sources'].items():
+        html += f"""
+        <h3>{category.replace('_', ' ').title()}</h3>
+        <ul class="source-list">
+"""
+        for source, url in sources.items():
+            html += f"""
+            <li class="source-item">
+                <strong>{source}:</strong> <a href="{url}" target="_blank">{url}</a>
+            </li>
+"""
+        html += """
+        </ul>
+"""
+    
+    html += """
+        <h2>📊 Search Results</h2>
+"""
+    
+    if report['results']:
+        for key, result in report['results'].items():
+            html += f"""
+        <div class="search-param">
+            <strong>Search Term:</strong> {result['search_term']}<br>
+            <strong>Status:</strong> <span class="status {result['status']}">{result['status']}</span><br>
+            <strong>Available Sources:</strong>
+            <ul class="source-list">
+"""
+            for source, url in result['sources'].items():
+                html += f"""
+                <li class="source-item">
+                    <a href="{url}" target="_blank">{source}</a>
+                </li>
+"""
+            html += """
+            </ul>
+        </div>
+"""
+    else:
+        html += """
+        <p class="empty">No search results yet. Fill in search parameters and run the tool.</p>
+"""
+    
+    html += f"""
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; text-align: center; color: #666;">
+            <p>Total Sources: {report['total_sources']} | Status: <span class="status {report['status']}">{report['status']}</span></p>
+            <p style="font-size: 12px;">Educational Purpose Only - Respect Privacy</p>
+        </div>
+    </div>
+</body>
+</html>
+"""
+    return html
 
 def main():
     """Main function"""
