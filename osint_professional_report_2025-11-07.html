@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقرير OSINT - طرفه عبدالعزيز الجبالي</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 4px solid #667eea;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .header .metadata {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .classification {
+            background: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-right: 4px solid #764ba2;
+        }
+        .section h2 {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #764ba2;
+            padding-bottom: 10px;
+        }
+        .section h3 {
+            color: #667eea;
+            font-size: 1.4em;
+            margin: 20px 0 10px 0;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .info-card {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            border-right: 3px solid #667eea;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .info-card strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .account-card {
+            background: #e8f4f8;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-right: 4px solid #17a2b8;
+        }
+        .account-card h4 {
+            color: #17a2b8;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        .account-card a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .account-card a:hover {
+            text-decoration: underline;
+        }
+        .list-item {
+            background: white;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border-right: 3px solid #764ba2;
+        }
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin: 5px;
+        }
+        .badge-success {
+            background: #28a745;
+            color: white;
+        }
+        .badge-warning {
+            background: #ffc107;
+            color: #333;
+        }
+        .badge-danger {
+            background: #dc3545;
+            color: white;
+        }
+        .badge-info {
+            background: #17a2b8;
+            color: white;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        ul li:before {
+            content: "▸ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            border-right: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table th, table td {
+            padding: 12px;
+            text-align: right;
+            border-bottom: 1px solid #ddd;
+        }
+        table th {
+            background: #667eea;
+            color: white;
+        }
+        table tr:hover {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="classification">سري</div>
+            <h1>تقرير OSINT - طرفه عبدالعزيز الجبالي</h1>
+            <div class="metadata">
+                <p><strong>معرف التقرير:</strong> OSINT-2025-001</p>
+                <p><strong>تاريخ الإنشاء:</strong> 2025-11-07</p>
+                <p><strong>المحلل:</strong> محلل OSINT</p>
+                <p><strong>الإصدار:</strong> 1.0</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 الملخص التنفيذي</h2>
+            <div class="highlight">
+                <h3>الغرض من التحقيق</h3>
+                <p>تحليل البصمة الرقمية للهدف المحدد</p>
+            </div>
+            <h3>النتائج الرئيسية</h3>
+            <ul>
+<li>تم تحديد حسابين نشطين على منصات التواصل الاجتماعي</li>
+<li>رقم هاتف سعودي مرتبط بالهوية</li>
+<li>وجود نشاط على انستقرام وتيك توك</li>
+
+            </ul>
+            <h3>تقييم المخاطر</h3>
+            <p><span class="badge badge-warning">منخفض إلى متوسط - بيانات أساسية متاحة</span></p>
+            <h3>التوصيات</h3>
+            <ul>
+<li>مراقبة النشاط على المنصات المحددة</li>
+<li>التحقق من الحسابات المرتبطة الأخرى</li>
+<li>تحليل أعمق لمحتوى المنصات</li>
+
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🎯 معلومات الهدف</h2>
+
+            <div class="info-card">
+                <strong>معرف الهدف:</strong> TARGET_001<br>
+                <strong>النوع:</strong> شخص طبيعي<br>
+                <strong>الاسم:</strong> طرفه عبدالعزيز الجبالي / Tarfa Abdulaziz Al-Jabali<br>
+                <strong>الأولوية:</strong> <span class="badge badge-danger">عالي</span><br>
+                <strong>المعرفات المرتبطة:</strong>
+                <ul>
+<li>+966558899680</li>
+<li>__tofah__</li>
+<li>_lemoonah_</li>
+<li>7243145311366988805</li>
+
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="section">
+            <h2>📱 الحسابات الرقمية</h2>
+
+            <div class="account-card">
+                <h4>Instagram - __tofah__</h4>
+                <p><strong>الرابط:</strong> <a href="https://instagram.com/__tofah__" target="_blank">https://instagram.com/__tofah__</a></p>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <strong>آخر نشاط:</strong> مطلوب تحقق
+                    </div>
+                    <div class="info-card">
+                        <strong>تاريخ الإنشاء:</strong> مطلوب تحقق
+                    </div>
+                    <div class="info-card">
+                        <strong>حالة التحقق:</strong> <span class="badge badge-info">غير محقق</span>
+                    </div>
+                    <div class="info-card">
+                        <strong>المتابعون:</strong> مطلوب تحقق
+                    </div>
+                    <div class="info-card">
+                        <strong>المتابَعون:</strong> مطلوب تحقق
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="account-card">
+                <h4>TikTok - _lemoonah_</h4>
+                <p><strong>الرابط:</strong> <a href="https://tiktok.com/@_lemoonah_" target="_blank">https://tiktok.com/@_lemoonah_</a></p>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <strong>آخر نشاط:</strong> مطلوب تحقق
+                    </div>
+                    <div class="info-card">
+                        <strong>تاريخ الإنشاء:</strong> مطلوب تحقق
+                    </div>
+                    <div class="info-card">
+                        <strong>حالة التحقق:</strong> <span class="badge badge-info">غير محقق</span>
+                    </div>
+                    <div class="info-card">
+                        <strong>المتابعون:</strong> مطلوب تحقق
+                    </div>
+                    <div class="info-card">
+                        <strong>المتابَعون:</strong> مطلوب تحقق
+                    </div>
+
+                    <div class="info-card">
+                        <strong>معرف المستخدم:</strong> 7243145311366988805
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section">
+            <h2>📞 معلومات الاتصال</h2>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <strong>الاسم الكامل:</strong> طرفه عبدالعزيز الجبالي
+                </div>
+                <div class="info-card">
+                    <strong>الاسم بالإنجليزية:</strong> Tarfa Abdulaziz Al-Jabali
+                </div>
+                <div class="info-card">
+                    <strong>الموقع الحالي:</strong> المملكة العربية السعودية
+                </div>
+            </div>
+            <h3>أرقام الهواتف</h3>
+
+            <div class="info-card">
+                <strong>الرقم:</strong> +966558899680<br>
+                <strong>البلد:</strong> المملكة العربية السعودية<br>
+                <strong>المشغل:</strong> مطلوب تحديد<br>
+                <strong>حالة التحقق:</strong> <span class="badge badge-success">مؤكد</span>
+            </div>
+
+        </div>
+
+        <div class="section">
+            <h2>🔒 مخاوف الأمان</h2>
+
+            <h3>المعلومات المكشوفة</h3>
+            <ul>
+<li>اسم المستخدم على منصات متعددة</li>
+<li>رقم هاتف متاح</li>
+<li>الاسم الكامل</li>
+
+            </ul>
+            <h3>نقاط الضعف المحتملة</h3>
+            <ul>
+<li>استخدام معرفات مماثلة عبر منصات متعددة</li>
+<li>إمكانية الربط بين الحسابات</li>
+
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>📊 التحليل والتقييم</h2>
+
+            <h3>مستوى التهديد الحالي</h3>
+            <p><span class="badge badge-warning">منخفض</span></p>
+            <h3>عوامل المخاطر</h3>
+            <ul>
+<li>وجود معلومات شخصية متاحة عامة</li>
+<li>حسابات قابلة للتتبع</li>
+
+            </ul>
+            <h3>توصيات التخفيف</h3>
+            <ul>
+<li>مراجعة إعدادات الخصوصية</li>
+<li>تنويع معرفات المستخدمين</li>
+<li>تقليل المعلومات الشخصية المشاركة</li>
+
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p><strong>تصنيف:</strong> {metadata.get('classification_level', 'سري')}</p>
+            <p>هذا التقرير سري ومخصص للمخولين فقط</p>
+            <p>تاريخ التوزيع: {metadata.get('date_created', 'N/A')}</p>
+            <p style="margin-top: 20px; font-size: 0.8em; color: #999;">
+                تم إنشاء هذا التقرير باستخدام أدوات OSINT - للأغراض القانونية والأخلاقية فقط
+            </p>
+        </div>
+    </div>
+</body>
+</html>
