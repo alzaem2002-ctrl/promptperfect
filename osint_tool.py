@@ -14,6 +14,7 @@ SEARCH_PARAMS = {
     "phone": "+966558899680",
     "instagram_username": "__tofah__",
     "tiktok_username": "_lemoonah_",
+    "tiktok_user_id": "7243145311366988805",
     "email": "",
     "domain": "",
     "hash_value": "",
@@ -170,7 +171,8 @@ def generate_report():
                 "bio": "",
                 "followers": "",
                 "following": "",
-                "likes": ""
+                "likes": "",
+                "user_id": SEARCH_PARAMS.get("tiktok_user_id", "")
             }
         })
     
