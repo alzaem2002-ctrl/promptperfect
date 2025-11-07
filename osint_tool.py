@@ -9,6 +9,7 @@ from datetime import datetime
 
 # Search parameters
 SEARCH_PARAMS = {
+    "name": "طرفة عبدالعزيز الجبالي",
     "username": "طرفة عبدالعزيز الجبالي",
     "phone": "+966558899680",
     "instagram_username": "__tofah__",
@@ -124,7 +125,7 @@ def generate_report():
     for key, value in SEARCH_PARAMS.items():
         if value:
             category_key = None
-            if "username" in key.lower() or "instagram" in key.lower() or "tiktok" in key.lower():
+            if "name" in key.lower() or "username" in key.lower() or "instagram" in key.lower() or "tiktok" in key.lower():
                 category_key = "username_search"
             elif "phone" in key.lower() or "+" in key:
                 category_key = "phone_search"
