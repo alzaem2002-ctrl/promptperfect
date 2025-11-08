@@ -1,0 +1,128 @@
+{
+  "timestamp": "2025-11-06T18:56:45.671575",
+  "search_parameters": {
+    "username": "طرفة عبدالعزيز الجبالي",
+    "phone": "+966558899680",
+    "instagram_username": "__tofah__",
+    "tiktok_username": "_lemoonah_",
+    "email": "",
+    "domain": "",
+    "hash_value": ""
+  },
+  "sources_configured": 5,
+  "total_sources": 25,
+  "status": "ready",
+  "osint_sources": {
+    "username_search": {
+      "Sherlock": "https://github.com/sherlock-project/sherlock",
+      "WhatsMyName": "https://github.com/WebBreacher/WhatsMyName",
+      "Namechk": "https://namechk.com/",
+      "CheckUsernames": "https://checkusernames.com/",
+      "Maigret": "https://github.com/soxoj/maigret"
+    },
+    "phone_search": {
+      "PhoneInfoga": "https://github.com/sundowndev/phoneinfoga",
+      "TrueCaller": "https://www.truecaller.com/",
+      "WhitePages": "https://www.whitepages.com/",
+      "PeopleFinder": "https://www.peoplefinder.com/",
+      "Spokeo": "https://www.spokeo.com/"
+    },
+    "email_search": {
+      "Hunter.io": "https://hunter.io/",
+      "RocketReach": "https://rocketreach.co/",
+      "EmailFinder": "https://www.emailfinder.com/",
+      "Clearbit": "https://clearbit.com/",
+      "MailboxValidator": "https://www.mailboxvalidator.com/"
+    },
+    "domain_search": {
+      "Shodan": "https://www.shodan.io/",
+      "Censys": "https://search.censys.io/",
+      "WHOIS Lookup": "https://whois.net/",
+      "DNS Dumpster": "https://dnsdumpster.com/",
+      "SecurityTrails": "https://securitytrails.com/"
+    },
+    "hash_search": {
+      "VirusTotal": "https://www.virustotal.com/",
+      "Have I Been Pwned": "https://haveibeenpwned.com/",
+      "Hybrid Analysis": "https://www.hybrid-analysis.com/",
+      "Malware.Expert": "https://malware.expert/",
+      "AlienVault OTX": "https://otx.alienvault.com/"
+    }
+  },
+  "results": {
+    "username": {
+      "search_term": "طرفة عبدالعزيز الجبالي",
+      "sources": {
+        "Sherlock": "https://github.com/sherlock-project/sherlock",
+        "WhatsMyName": "https://github.com/WebBreacher/WhatsMyName",
+        "Namechk": "https://namechk.com/",
+        "CheckUsernames": "https://checkusernames.com/",
+        "Maigret": "https://github.com/soxoj/maigret"
+      },
+      "status": "pending"
+    },
+    "phone": {
+      "search_term": "+966558899680",
+      "sources": {
+        "PhoneInfoga": "https://github.com/sundowndev/phoneinfoga",
+        "TrueCaller": "https://www.truecaller.com/",
+        "WhitePages": "https://www.whitepages.com/",
+        "PeopleFinder": "https://www.peoplefinder.com/",
+        "Spokeo": "https://www.spokeo.com/"
+      },
+      "status": "pending"
+    },
+    "instagram_username": {
+      "search_term": "__tofah__",
+      "sources": {
+        "Sherlock": "https://github.com/sherlock-project/sherlock",
+        "WhatsMyName": "https://github.com/WebBreacher/WhatsMyName",
+        "Namechk": "https://namechk.com/",
+        "CheckUsernames": "https://checkusernames.com/",
+        "Maigret": "https://github.com/soxoj/maigret"
+      },
+      "status": "pending"
+    },
+    "tiktok_username": {
+      "search_term": "_lemoonah_",
+      "sources": {
+        "Sherlock": "https://github.com/sherlock-project/sherlock",
+        "WhatsMyName": "https://github.com/WebBreacher/WhatsMyName",
+        "Namechk": "https://namechk.com/",
+        "CheckUsernames": "https://checkusernames.com/",
+        "Maigret": "https://github.com/soxoj/maigret"
+      },
+      "status": "pending"
+    }
+  },
+  "found_accounts": [
+    {
+      "platform": "Instagram",
+      "username": "__tofah__",
+      "url": "https://instagram.com/__tofah__",
+      "status": "found",
+      "profile_info": {
+        "display_name": "",
+        "bio": "",
+        "followers": "",
+        "following": "",
+        "posts": ""
+      }
+    },
+    {
+      "platform": "TikTok",
+      "username": "_lemoonah_",
+      "url": "https://tiktok.com/@_lemoonah_",
+      "status": "found",
+      "profile_info": {
+        "display_name": "",
+        "bio": "",
+        "followers": "",
+        "following": "",
+        "likes": ""
+      }
+    }
+  ],
+  "messages": [],
+  "available_images": []
+}

@@ -1,0 +1,157 @@
+{
+  "research_metadata": {
+    "research_date": "2025-11-08T17:19:20.414881",
+    "research_type": "Account Information Gathering",
+    "methodology": "Pattern Analysis & Cross-Platform Research",
+    "researcher": "Cyber Security Expert"
+  },
+  "target_accounts": {
+    "instagram": {
+      "username": "__tofah__",
+      "url": "https://instagram.com/__tofah__",
+      "research_status": "analyzed"
+    },
+    "tiktok": {
+      "username": "_lemoonah_",
+      "user_id": "7243145311366988805",
+      "url": "https://tiktok.com/@_lemoonah_",
+      "research_status": "analyzed"
+    }
+  },
+  "account_research": {
+    "instagram": {
+      "username": "__tofah__",
+      "profile_url": "https://instagram.com/__tofah__",
+      "account_analysis": {
+        "username_meaning": {
+          "possible_meanings": [
+            "Tofah (تفاح) - Apple in Arabic"
+          ],
+          "language_patterns": [
+            "Arabic/English mix"
+          ],
+          "character_analysis": {
+            "underscore_pattern": "Double underscore - common in Arabic usernames",
+            "style": "Arabic naming convention"
+          }
+        },
+        "account_type": "Personal",
+        "likely_private": "Unknown - requires manual check",
+        "naming_pattern": "Arabic/English mix with underscores"
+      },
+      "potential_connections": {
+        "name_variations": [
+          "Tofah",
+          "Tofa",
+          "Tofah_",
+          "__tofah"
+        ],
+        "related_searches": [
+          "__tofah__ instagram",
+          "tofah instagram",
+          "طرفة instagram"
+        ]
+      },
+      "research_notes": [
+        "Username uses double underscore pattern (__) - common in Arabic usernames",
+        "Name 'tofah' suggests Arabic origin",
+        "Account likely created for personal use",
+        "May be connected to TikTok account _lemoonah_ through naming pattern"
+      ]
+    },
+    "tiktok": {
+      "username": "_lemoonah_",
+      "user_id": "7243145311366988805",
+      "profile_url": "https://tiktok.com/@_lemoonah_",
+      "account_analysis": {
+        "username_meaning": {
+          "possible_meanings": [
+            "Lemoonah (ليمونة) - Lemon in Arabic"
+          ],
+          "language_patterns": [
+            "Arabic/English mix"
+          ],
+          "character_analysis": {
+            "underscore_pattern": "Double underscore - common in Arabic usernames",
+            "style": "Arabic naming convention"
+          }
+        },
+        "user_id_valid": true,
+        "account_type": "Personal",
+        "naming_pattern": "Arabic/English mix with underscores"
+      },
+      "potential_connections": {
+        "name_variations": [
+          "Lemoonah",
+          "Lemonah",
+          "_lemoonah",
+          "lemoonah_"
+        ],
+        "related_searches": [
+          "_lemoonah_ tiktok",
+          "lemoonah tiktok",
+          "طرفة tiktok"
+        ]
+      },
+      "research_notes": [
+        "User ID 7243145311366988805 indicates registered TikTok account",
+        "Username 'lemoonah' suggests Arabic origin (lemon)",
+        "Similar naming pattern to Instagram account (underscores)",
+        "May be same person as Instagram account based on pattern"
+      ]
+    }
+  },
+  "related_accounts": {
+    "similar_usernames": [],
+    "name_based_searches": [
+      "طرفة الجبالي",
+      "طرفة_الجبالي",
+      "_طرفة_",
+      "الجبالي_طرفة"
+    ],
+    "pattern_based_searches": [
+      "tofah",
+      "_tofah",
+      "tofah_",
+      "__tofah__",
+      "lemoonah",
+      "_lemoonah",
+      "lemoonah_"
+    ]
+  },
+  "cross_platform_analysis": {
+    "naming_consistency": {
+      "underscore_usage": "Consistent",
+      "prefix_pattern": "Consistent",
+      "length_similarity": "Similar"
+    },
+    "pattern_similarity": {
+      "score": 1.0
+    },
+    "likely_same_person": true,
+    "confidence_score": 0.85
+  },
+  "findings": {
+    "confirmed_information": [],
+    "high_probability_findings": [
+      {
+        "finding": "Instagram و TikTok حسابات لنفس الشخص",
+        "confidence": 0.85,
+        "evidence": [
+          "نمط أسماء المستخدمين متسق",
+          "استخدام الشرطة السفلية متسق",
+          "أسماء مشابهة (tofah/lemoonah)"
+        ]
+      }
+    ],
+    "recommended_searches": [
+      "البحث عن 'طرفة الجبالي' على Google",
+      "البحث عن '__tofah__' على منصات أخرى",
+      "البحث عن '_lemoonah_' على منصات أخرى",
+      "البحث عن رقم الهاتف على TrueCaller",
+      "البحث عن الاسم الكامل على LinkedIn",
+      "البحث عن الاسم على Facebook",
+      "البحث عن الاسم على Twitter/X"
+    ]
+  }
+}

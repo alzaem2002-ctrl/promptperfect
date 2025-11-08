@@ -1,0 +1,94 @@
+{
+  "report_metadata": {
+    "timestamp": "2025-11-06T19:04:03.539701",
+    "report_type": "Professional OSINT Investigation",
+    "investigator": "",
+    "case_number": "",
+    "classification": "Confidential"
+  },
+  "target_information": {
+    "primary_name": "طرفة عبدالعزيز الجبالي",
+    "aliases": [],
+    "date_of_birth": "",
+    "location": "",
+    "nationality": "",
+    "phone_numbers": [
+      {
+        "number": "+966558899680",
+        "type": "Mobile",
+        "carrier": "",
+        "location": "",
+        "status": "Active"
+      }
+    ],
+    "email_addresses": [],
+    "addresses": []
+  },
+  "social_media_accounts": {
+    "primary_accounts": [
+      {
+        "platform": "Instagram",
+        "username": "__tofah__",
+        "url": "https://instagram.com/__tofah__",
+        "display_name": "",
+        "bio": "",
+        "profile_picture": "",
+        "followers_count": "",
+        "following_count": "",
+        "posts_count": "",
+        "account_created": "",
+        "verification_status": "",
+        "is_private": "",
+        "last_active": ""
+      },
+      {
+        "platform": "TikTok",
+        "username": "_lemoonah_",
+        "url": "https://tiktok.com/@_lemoonah_",
+        "display_name": "",
+        "bio": "",
+        "profile_picture": "",
+        "followers_count": "",
+        "following_count": "",
+        "likes_count": "",
+        "account_created": "",
+        "verification_status": "",
+        "last_active": ""
+      }
+    ],
+    "connected_accounts": [],
+    "related_accounts": []
+  },
+  "relationships": {
+    "family_members": [],
+    "associates": [],
+    "mutual_connections": [],
+    "tagged_with": []
+  },
+  "phone_analysis": {
+    "carrier_info": {
+      "carrier": "",
+      "country": "Saudi Arabia",
+      "region": "",
+      "line_type": ""
+    },
+    "associated_accounts": [],
+    "reverse_lookup_results": []
+  },
+  "digital_footprint": {
+    "websites": [],
+    "domains": [],
+    "usernames_across_platforms": [],
+    "email_breaches": []
+  },
+  "images_and_media": {
+    "profile_pictures": [],
+    "public_images": [],
+    "videos": []
+  },
+  "messages_and_communications": [],
+  "timeline": [],
+  "osint_sources_used": [],
+  "findings_summary": "",
+  "recommendations": ""
+}

@@ -1,0 +1,252 @@
+{
+  "report_metadata": {
+    "timestamp": "2025-11-06T19:04:03",
+    "report_type": "Professional OSINT Investigation",
+    "investigator": "To be filled",
+    "case_number": "To be filled",
+    "classification": "Confidential"
+  },
+  "target_information": {
+    "primary_name": "طرفة عبدالعزيز الجبالي",
+    "aliases": [
+      "To be filled - check all social media profiles for name variations"
+    ],
+    "date_of_birth": "To be filled - search public records, social media",
+    "location": "To be filled - check phone area code, social media location tags",
+    "nationality": "Saudi Arabia (based on phone prefix +966)",
+    "phone_numbers": [
+      {
+        "number": "+966558899680",
+        "type": "Mobile",
+        "carrier": "To be filled - use phone lookup tools",
+        "location": "To be filled - use TrueCaller, WhitePages",
+        "status": "Active",
+        "whatsapp_linked": "To be checked",
+        "telegram_linked": "To be checked",
+        "associated_accounts": []
+      }
+    ],
+    "email_addresses": [
+      "To be filled - use email finder tools, check social media bios"
+    ],
+    "addresses": [
+      "To be filled - use phone lookup, public records"
+    ]
+  },
+  "social_media_accounts": {
+    "primary_accounts": [
+      {
+        "platform": "Instagram",
+        "username": "__tofah__",
+        "url": "https://instagram.com/__tofah__",
+        "display_name": "To be filled - visit profile",
+        "bio": "To be filled - visit profile",
+        "profile_picture": "To be filled - URL to profile picture",
+        "followers_count": "To be filled",
+        "following_count": "To be filled",
+        "posts_count": "To be filled",
+        "account_created": "To be filled - check account creation date",
+        "verification_status": "To be checked",
+        "is_private": "To be checked",
+        "last_active": "To be filled - check last post date",
+        "hashtags_used": [],
+        "locations_tagged": [],
+        "people_tagged": []
+      },
+      {
+        "platform": "TikTok",
+        "username": "_lemoonah_",
+        "url": "https://tiktok.com/@_lemoonah_",
+        "display_name": "To be filled - visit profile",
+        "bio": "To be filled - visit profile",
+        "profile_picture": "To be filled - URL to profile picture",
+        "followers_count": "To be filled",
+        "following_count": "To be filled",
+        "likes_count": "To be filled",
+        "videos_count": "To be filled",
+        "account_created": "To be filled",
+        "verification_status": "To be checked",
+        "last_active": "To be filled",
+        "hashtags_used": [],
+        "sounds_used": []
+      }
+    ],
+    "connected_accounts": [
+      {
+        "platform": "To be filled",
+        "username": "To be filled",
+        "url": "To be filled",
+        "connection_type": "Mutual Follower / Similar Username / Phone Lookup / etc.",
+        "discovery_method": "How this account was found",
+        "profile_info": {},
+        "notes": ""
+      }
+    ],
+    "related_accounts": [
+      {
+        "platform": "To be filled - check for accounts with similar usernames",
+        "username": "To be filled",
+        "url": "To be filled",
+        "similarity_reason": "Why this account might be related",
+        "profile_info": {}
+      }
+    ],
+    "other_platforms_found": [
+      {
+        "platform": "Twitter / Facebook / Snapchat / LinkedIn / etc.",
+        "username": "To be filled - use Sherlock, Maigret tools",
+        "url": "To be filled",
+        "profile_info": {}
+      }
+    ]
+  },
+  "relationships": {
+    "family_members": [
+      {
+        "name": "To be filled - check tagged photos, family mentions",
+        "relationship": "To be filled",
+        "social_media_accounts": [],
+        "phone_numbers": []
+      }
+    ],
+    "associates": [
+      {
+        "name": "To be filled - check mutual followers, tagged photos",
+        "relationship_type": "Friend / Colleague / etc.",
+        "social_media_accounts": [],
+        "connection_evidence": "How the relationship was identified"
+      }
+    ],
+    "mutual_connections": [
+      {
+        "name": "To be filled",
+        "platform": "To be filled",
+        "username": "To be filled",
+        "url": "To be filled",
+        "mutual_count": "Number of mutual connections"
+      }
+    ],
+    "tagged_with": [
+      {
+        "person_name": "To be filled - check photos where target is tagged",
+        "platform": "To be filled",
+        "post_url": "To be filled",
+        "date": "To be filled"
+      }
+    ]
+  },
+  "phone_analysis": {
+    "carrier_info": {
+      "carrier": "To be filled - use TrueCaller, PhoneInfoga",
+      "country": "Saudi Arabia",
+      "region": "To be filled - check area code 055",
+      "line_type": "Mobile",
+      "operator": "To be filled - STC / Mobily / Zain"
+    },
+    "associated_accounts": [
+      {
+        "platform": "WhatsApp / Telegram / Signal",
+        "linked": "To be checked",
+        "profile_info": {}
+      }
+    ],
+    "reverse_lookup_results": [
+      {
+        "source": "TrueCaller / WhitePages / etc.",
+        "name_found": "To be filled",
+        "location": "To be filled",
+        "additional_info": {}
+      }
+    ],
+    "whatsapp_info": {
+      "is_registered": "To be checked",
+      "profile_name": "To be filled",
+      "profile_picture": "To be filled",
+      "last_seen": "To be filled",
+      "status": "To be filled"
+    }
+  },
+  "digital_footprint": {
+    "websites": [
+      {
+        "url": "To be filled - check bio links, tagged websites",
+        "type": "Personal website / Blog / Portfolio",
+        "content": "To be filled"
+      }
+    ],
+    "domains": [
+      {
+        "domain": "To be filled - check email domains, website domains",
+        "registrar": "To be filled - use WHOIS",
+        "creation_date": "To be filled",
+        "owner_info": "To be filled"
+      }
+    ],
+    "usernames_across_platforms": [
+      {
+        "username": "To be filled - check for username consistency",
+        "platforms_found": []
+      }
+    ],
+    "email_breaches": [
+      {
+        "email": "To be filled",
+        "breach_sources": "To be checked - use Have I Been Pwned",
+        "breach_dates": []
+      }
+    ]
+  },
+  "images_and_media": {
+    "profile_pictures": [
+      {
+        "platform": "To be filled",
+        "url": "To be filled",
+        "date_uploaded": "To be filled",
+        "reverse_image_search_results": []
+      }
+    ],
+    "public_images": [
+      {
+        "description": "To be filled",
+        "url": "To be filled",
+        "source": "To be filled",
+        "date": "To be filled",
+        "location": "To be filled - check EXIF data if available",
+        "people_in_image": []
+      }
+    ],
+    "videos": [
+      {
+        "description": "To be filled",
+        "url": "To be filled",
+        "platform": "To be filled",
+        "date": "To be filled",
+        "views": "To be filled",
+        "location": "To be filled"
+      }
+    ]
+  },
+  "messages_and_communications": [
+    {
+      "date": "To be filled",
+      "platform": "To be filled",
+      "sender": "To be filled",
+      "recipient": "To be filled",
+      "content": "To be filled",
+      "attachments": []
+    }
+  ],
+  "timeline": [
+    {
+      "date": "To be filled",
+      "event": "To be filled",
+      "source": "To be filled",
+      "evidence": "To be filled"
+    }
+  ],
+  "osint_sources_used": [
+    "List all OSINT tools and sources used in this investigation"
+  ],
+  "findings_summary": "To be filled - comprehensive summary of all findings",
+  "recommendations": "To be filled - recommendations for further investigation"
+}

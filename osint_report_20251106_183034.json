@@ -1,0 +1,51 @@
+{
+  "timestamp": "2025-11-06T18:30:34.913860",
+  "search_parameters": {
+    "\u0637\u0631\u0641\u0629 \u0639\u0628\u062f\u0627\u0644\u0639\u0632\u064a\u0632 \u0627\u0644\u062c\u0628\u0627\u0644\u064a ": "",
+    "+966558899680": "",
+    "email": "",
+    "domain": "",
+    "hash_value": ""
+  },
+  "sources_configured": 5,
+  "total_sources": 25,
+  "status": "ready",
+  "osint_sources": {
+    "username_search": {
+      "Sherlock": "https://github.com/sherlock-project/sherlock",
+      "WhatsMyName": "https://github.com/WebBreacher/WhatsMyName",
+      "Namechk": "https://namechk.com/",
+      "CheckUsernames": "https://checkusernames.com/",
+      "Maigret": "https://github.com/soxoj/maigret"
+    },
+    "phone_search": {
+      "PhoneInfoga": "https://github.com/sundowndev/phoneinfoga",
+      "TrueCaller": "https://www.truecaller.com/",
+      "WhitePages": "https://www.whitepages.com/",
+      "PeopleFinder": "https://www.peoplefinder.com/",
+      "Spokeo": "https://www.spokeo.com/"
+    },
+    "email_search": {
+      "Hunter.io": "https://hunter.io/",
+      "RocketReach": "https://rocketreach.co/",
+      "EmailFinder": "https://www.emailfinder.com/",
+      "Clearbit": "https://clearbit.com/",
+      "MailboxValidator": "https://www.mailboxvalidator.com/"
+    },
+    "domain_search": {
+      "Shodan": "https://www.shodan.io/",
+      "Censys": "https://search.censys.io/",
+      "WHOIS Lookup": "https://whois.net/",
+      "DNS Dumpster": "https://dnsdumpster.com/",
+      "SecurityTrails": "https://securitytrails.com/"
+    },
+    "hash_search": {
+      "VirusTotal": "https://www.virustotal.com/",
+      "Have I Been Pwned": "https://haveibeenpwned.com/",
+      "Hybrid Analysis": "https://www.hybrid-analysis.com/",
+      "Malware.Expert": "https://malware.expert/",
+      "AlienVault OTX": "https://otx.alienvault.com/"
+    }
+  },
+  "results": {}
+}

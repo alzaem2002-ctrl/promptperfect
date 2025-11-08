@@ -1,0 +1,349 @@
+{
+  "report_metadata": {
+    "report_id": "OSINT-20251108-170708",
+    "report_type": "Professional OSINT Investigation",
+    "investigator": "Cyber Security Expert",
+    "classification": "Confidential",
+    "methodology": "OSINT Best Practices",
+    "verification_level": "Standard",
+    "timestamp": "2025-11-08T17:07:08.391046",
+    "data_integrity_hash": "db516372a93512fc5b1771da328e64ec1e5fe0b84a260f2c9242532754b11f65"
+  },
+  "executive_summary": {
+    "investigation_purpose": "تحليل البصمة الرقمية والتحقق من المصداقية",
+    "scope": "تحليل شامل للوجود الرقمي عبر منصات متعددة",
+    "key_findings": [],
+    "credibility_assessment": {},
+    "risk_assessment": "منخفض إلى متوسط",
+    "recommendations": []
+  },
+  "search_parameters": {
+    "name": "طرفة عبدالعزيز الجبالي",
+    "username": "طرفة عبدالعزيز الجبالي",
+    "phone": "+966558899680",
+    "instagram_username": "__tofah__",
+    "tiktok_username": "_lemoonah_",
+    "tiktok_user_id": "7243145311366988805",
+    "email": "",
+    "domain": "",
+    "hash_value": ""
+  },
+  "verification_framework": {
+    "source_credibility": {
+      "username_search": {
+        "credibility_level": "high",
+        "sources_count": 5,
+        "high_credibility_sources": 3
+      }
+    },
+    "cross_reference_results": {},
+    "data_integrity": {}
+  },
+  "digital_footprint": {
+    "name_connections": {
+      "primary_name": "طرفة عبدالعزيز الجبالي",
+      "aliases": [
+        "طرفة عبدالعزيز الجبالي"
+      ],
+      "platform_usernames": {
+        "Instagram": "__tofah__",
+        "TikTok": "_lemoonah_",
+        "General": "طرفة عبدالعزيز الجبالي"
+      },
+      "contact_info": {
+        "phone": "+966558899680",
+        "email": ""
+      },
+      "verification_notes": "يتطلب التحقق اليدوي من المطابقة بين الأسماء والحسابات"
+    },
+    "activity_analysis": {
+      "instagram_activity": {
+        "username": "__tofah__",
+        "profile_url": "https://instagram.com/__tofah__",
+        "verification_status": "pending",
+        "posts_analysis": "يتطلب الوصول المباشر للملف الشخصي للتحقق",
+        "hashtags_used": [],
+        "locations_tagged": [],
+        "people_tagged": [],
+        "activity_timeline": [],
+        "credibility_note": "البيانات المقدمة أولية - يتطلب تحقق يدوي"
+      },
+      "tiktok_activity": {
+        "username": "_lemoonah_",
+        "user_id": "7243145311366988805",
+        "profile_url": "https://tiktok.com/@_lemoonah_",
+        "verification_status": "pending",
+        "videos_analysis": "يتطلب الوصول المباشر للملف الشخصي للتحقق",
+        "sounds_used": [],
+        "hashtags_used": [],
+        "activity_timeline": [],
+        "credibility_note": "البيانات المقدمة أولية - يتطلب تحقق يدوي"
+      },
+      "general_activity": {
+        "name_mentions": [],
+        "cross_platform_activity": [],
+        "digital_presence_summary": "وجود رقمي محتمل على منصات متعددة مرتبطة بالاسم: طرفة عبدالعزيز الجبالي",
+        "verification_level": "preliminary"
+      }
+    },
+    "cross_platform_links": [
+      {
+        "primary_name": "طرفة عبدالعزيز الجبالي",
+        "name_variations": [
+          "طرفة عبدالعزيز الجبالي"
+        ],
+        "platforms": [
+          {
+            "platform": "Instagram",
+            "username": "__tofah__",
+            "url": "https://instagram.com/__tofah__",
+            "name_used": "طرفة عبدالعزيز الجبالي",
+            "connection_type": "username_match",
+            "verification_status": "requires_manual_verification",
+            "verification_method": "profile_inspection_required"
+          },
+          {
+            "platform": "TikTok",
+            "username": "_lemoonah_",
+            "user_id": "7243145311366988805",
+            "url": "https://tiktok.com/@_lemoonah_",
+            "name_used": "طرفة عبدالعزيز الجبالي",
+            "connection_type": "username_match",
+            "verification_status": "requires_manual_verification",
+            "verification_method": "profile_inspection_required"
+          },
+          {
+            "platform": "Phone",
+            "number": "+966558899680",
+            "name_used": "طرفة عبدالعزيز الجبالي",
+            "connection_type": "contact_info",
+            "verification_status": "requires_reverse_lookup",
+            "verification_method": "phone_lookup_required",
+            "source_credibility": "medium"
+          }
+        ],
+        "verification_status": "pending_manual_review"
+      }
+    ],
+    "verification_status": {}
+  },
+  "osint_sources": {
+    "username_search": {
+      "Sherlock": {
+        "url": "https://github.com/sherlock-project/sherlock",
+        "credibility": "high",
+        "verification_method": "automated_cross_platform",
+        "last_verified": "2024-01-15"
+      },
+      "WhatsMyName": {
+        "url": "https://github.com/WebBreacher/WhatsMyName",
+        "credibility": "high",
+        "verification_method": "manual_verification",
+        "last_verified": "2024-01-10"
+      },
+      "Namechk": {
+        "url": "https://namechk.com/",
+        "credibility": "medium",
+        "verification_method": "automated",
+        "last_verified": "2024-01-12"
+      },
+      "CheckUsernames": {
+        "url": "https://checkusernames.com/",
+        "credibility": "medium",
+        "verification_method": "automated",
+        "last_verified": "2024-01-12"
+      },
+      "Maigret": {
+        "url": "https://github.com/soxoj/maigret",
+        "credibility": "high",
+        "verification_method": "automated_cross_platform",
+        "last_verified": "2024-01-14"
+      }
+    },
+    "phone_search": {
+      "PhoneInfoga": {
+        "url": "https://github.com/sundowndev/phoneinfoga",
+        "credibility": "high",
+        "verification_method": "technical_analysis",
+        "last_verified": "2024-01-13"
+      },
+      "TrueCaller": {
+        "url": "https://www.truecaller.com/",
+        "credibility": "medium",
+        "verification_method": "crowdsourced",
+        "last_verified": "2024-01-11"
+      },
+      "WhitePages": {
+        "url": "https://www.whitepages.com/",
+        "credibility": "medium",
+        "verification_method": "public_records",
+        "last_verified": "2024-01-10"
+      },
+      "PeopleFinder": {
+        "url": "https://www.peoplefinder.com/",
+        "credibility": "medium",
+        "verification_method": "public_records",
+        "last_verified": "2024-01-10"
+      },
+      "Spokeo": {
+        "url": "https://www.spokeo.com/",
+        "credibility": "medium",
+        "verification_method": "aggregated_data",
+        "last_verified": "2024-01-09"
+      }
+    },
+    "email_search": {
+      "Hunter.io": {
+        "url": "https://hunter.io/",
+        "credibility": "high",
+        "verification_method": "technical_verification",
+        "last_verified": "2024-01-14"
+      },
+      "RocketReach": {
+        "url": "https://rocketreach.co/",
+        "credibility": "high",
+        "verification_method": "professional_networks",
+        "last_verified": "2024-01-13"
+      },
+      "EmailFinder": {
+        "url": "https://www.emailfinder.com/",
+        "credibility": "medium",
+        "verification_method": "automated",
+        "last_verified": "2024-01-12"
+      },
+      "Clearbit": {
+        "url": "https://clearbit.com/",
+        "credibility": "high",
+        "verification_method": "api_verification",
+        "last_verified": "2024-01-15"
+      },
+      "MailboxValidator": {
+        "url": "https://www.mailboxvalidator.com/",
+        "credibility": "high",
+        "verification_method": "smtp_verification",
+        "last_verified": "2024-01-14"
+      }
+    },
+    "domain_search": {
+      "Shodan": {
+        "url": "https://www.shodan.io/",
+        "credibility": "high",
+        "verification_method": "technical_scanning",
+        "last_verified": "2024-01-15"
+      },
+      "Censys": {
+        "url": "https://search.censys.io/",
+        "credibility": "high",
+        "verification_method": "technical_scanning",
+        "last_verified": "2024-01-15"
+      },
+      "WHOIS Lookup": {
+        "url": "https://whois.net/",
+        "credibility": "high",
+        "verification_method": "dns_records",
+        "last_verified": "2024-01-14"
+      },
+      "DNS Dumpster": {
+        "url": "https://dnsdumpster.com/",
+        "credibility": "high",
+        "verification_method": "dns_enumeration",
+        "last_verified": "2024-01-13"
+      },
+      "SecurityTrails": {
+        "url": "https://securitytrails.com/",
+        "credibility": "high",
+        "verification_method": "historical_dns",
+        "last_verified": "2024-01-15"
+      }
+    },
+    "hash_search": {
+      "VirusTotal": {
+        "url": "https://www.virustotal.com/",
+        "credibility": "high",
+        "verification_method": "multi_engine_scan",
+        "last_verified": "2024-01-15"
+      },
+      "Have I Been Pwned": {
+        "url": "https://haveibeenpwned.com/",
+        "credibility": "high",
+        "verification_method": "breach_database",
+        "last_verified": "2024-01-15"
+      },
+      "Hybrid Analysis": {
+        "url": "https://www.hybrid-analysis.com/",
+        "credibility": "high",
+        "verification_method": "sandbox_analysis",
+        "last_verified": "2024-01-14"
+      },
+      "Malware.Expert": {
+        "url": "https://malware.expert/",
+        "credibility": "medium",
+        "verification_method": "static_analysis",
+        "last_verified": "2024-01-12"
+      },
+      "AlienVault OTX": {
+        "url": "https://otx.alienvault.com/",
+        "credibility": "high",
+        "verification_method": "threat_intelligence",
+        "last_verified": "2024-01-15"
+      }
+    }
+  },
+  "results": {},
+  "found_accounts": [
+    {
+      "platform": "Instagram",
+      "username": "__tofah__",
+      "url": "https://instagram.com/__tofah__",
+      "status": "requires_verification",
+      "verification_status": "pending",
+      "profile_info": {
+        "display_name": "يتطلب التحقق",
+        "bio": "يتطلب التحقق",
+        "followers": "يتطلب التحقق",
+        "following": "يتطلب التحقق",
+        "posts": "يتطلب التحقق"
+      },
+      "credibility_note": "المعلومات المقدمة أولية - يتطلب فحص يدوي للملف الشخصي"
+    },
+    {
+      "platform": "TikTok",
+      "username": "_lemoonah_",
+      "url": "https://tiktok.com/@_lemoonah_",
+      "status": "requires_verification",
+      "verification_status": "pending",
+      "profile_info": {
+        "display_name": "يتطلب التحقق",
+        "bio": "يتطلب التحقق",
+        "followers": "يتطلب التحقق",
+        "following": "يتطلب التحقق",
+        "likes": "يتطلب التحقق",
+        "user_id": "7243145311366988805"
+      },
+      "credibility_note": "المعلومات المقدمة أولية - يتطلب فحص يدوي للملف الشخصي"
+    }
+  ],
+  "connected_accounts": [],
+  "analysis": {
+    "credibility_analysis": {},
+    "consistency_check": {},
+    "timeline_analysis": {},
+    "pattern_analysis": {}
+  },
+  "quality_assurance": {
+    "verification_checklist": {
+      "source_verification": "pending",
+      "cross_reference_completed": false,
+      "manual_review_required": true,
+      "data_integrity_verified": false
+    },
+    "data_quality_score": 0.3,
+    "recommendations": [
+      "إجراء فحص يدوي لجميع الحسابات المذكورة",
+      "التحقق من مطابقة الأسماء عبر المنصات",
+      "إجراء بحث عكسي لرقم الهاتف",
+      "التحقق من صحة معرفات المستخدمين",
+      "تحليل المحتوى المنشور للتحقق من الهوية"
+    ]
+  }
+}

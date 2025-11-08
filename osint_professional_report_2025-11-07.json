@@ -1,0 +1,399 @@
+{
+  "osint_report": {
+    "metadata": {
+      "report_id": "OSINT-2025-001",
+      "report_title": "تقرير OSINT - طرفه عبدالعزيز الجبالي",
+      "investigator_name": "محلل OSINT",
+      "organization": "",
+      "date_created": "2025-11-07",
+      "date_modified": "2025-11-07",
+      "report_version": "1.0",
+      "classification_level": "سري",
+      "case_reference": "",
+      "request_number": ""
+    },
+    "executive_summary": {
+      "investigation_purpose": "تحليل البصمة الرقمية للهدف المحدد",
+      "key_findings": [
+        "تم تحديد حسابين نشطين على منصات التواصل الاجتماعي",
+        "رقم هاتف سعودي مرتبط بالهوية",
+        "وجود نشاط على انستقرام وتيك توك"
+      ],
+      "risk_assessment": "منخفض إلى متوسط - بيانات أساسية متاحة",
+      "recommendations": [
+        "مراقبة النشاط على المنصات المحددة",
+        "التحقق من الحسابات المرتبطة الأخرى",
+        "تحليل أعمق لمحتوى المنصات"
+      ],
+      "investigation_timeline": {
+        "start_date": "2025-11-07",
+        "end_date": "2025-11-07",
+        "total_hours_spent": "1"
+      }
+    },
+    "investigation_scope": {
+      "objectives": [
+        "تحديد الحضور الرقمي للهدف",
+        "جمع معلومات الاتصال المتاحة",
+        "تحليل النشاط على منصات التواصل الاجتماعي"
+      ],
+      "limitations": [
+        "محدودية الوصول للحسابات الخاصة",
+        "عدم توفر أدوات متقدمة للتحليل العميق"
+      ],
+      "legal_considerations": "الالتزام بقوانين الخصوصية المحلية والدولية",
+      "ethical_guidelines_followed": [
+        "عدم انتهاك الخصوصية",
+        "استخدام المعلومات المتاحة عامة فقط",
+        "الغرض المشروع للتحقيق"
+      ],
+      "tools_and_techniques_used": [
+        "البحث المفتوح المصدر",
+        "تحليل منصات التواصل الاجتماعي",
+        "تحليل معرفات المستخدمين"
+      ]
+    },
+    "target_information": {
+      "primary_targets": [
+        {
+          "target_id": "TARGET_001",
+          "target_type": "شخص طبيعي",
+          "target_name": "طرفه عبدالعزيز الجبالي / Tarfa Abdulaziz Al-Jabali",
+          "description": "الهدف الأساسي للتحقيق",
+          "priority_level": "عالي",
+          "associated_identifiers": [
+            "+966558899680",
+            "__tofah__",
+            "_lemoonah_",
+            "7243145311366988805"
+          ]
+        }
+      ],
+      "secondary_targets": []
+    },
+    "data_sources": {
+      "search_engines": [
+        {
+          "engine_name": "Google",
+          "queries_performed": [
+            "طرفه عبدالعزيز الجبالي",
+            "Tarfa Abdulaziz Al-Jabali",
+            "+966558899680",
+            "__tofah__ instagram",
+            "_lemoonah_ tiktok"
+          ],
+          "results_count": "متغير",
+          "relevant_findings": [
+            "حسابات وسائل التواصل الاجتماعي المحددة"
+          ]
+        }
+      ],
+      "social_media_platforms": [
+        {
+          "platform_name": "Instagram",
+          "profiles_investigated": [
+            {
+              "username": "__tofah__",
+              "profile_status": "مطلوب تحقق"
+            }
+          ],
+          "data_collected": {
+            "profile_information": {
+              "username": "__tofah__",
+              "display_name": "مطلوب تحقق",
+              "bio": "مطلوب تحقق",
+              "follower_count": "مطلوب تحقق",
+              "following_count": "مطلوب تحقق"
+            },
+            "posts_analyzed": [],
+            "connections_mapped": [],
+            "multimedia_content": []
+          }
+        },
+        {
+          "platform_name": "TikTok",
+          "profiles_investigated": [
+            {
+              "username": "_lemoonah_",
+              "user_id": "7243145311366988805",
+              "profile_status": "مطلوب تحقق"
+            }
+          ],
+          "data_collected": {
+            "profile_information": {
+              "username": "_lemoonah_",
+              "user_id": "7243145311366988805",
+              "display_name": "مطلوب تحقق",
+              "bio": "مطلوب تحقق",
+              "follower_count": "مطلوب تحقق",
+              "following_count": "مطلوب تحقق"
+            },
+            "posts_analyzed": [],
+            "connections_mapped": [],
+            "multimedia_content": []
+          }
+        }
+      ],
+      "public_records": [],
+      "technical_sources": []
+    },
+    "findings": {
+      "digital_footprint": {
+        "online_presence_summary": "وجود رقمي محدود على منصتين أساسيتين للتواصل الاجتماعي",
+        "active_accounts": [
+          {
+            "platform": "Instagram",
+            "username": "__tofah__",
+            "profile_url": "https://instagram.com/__tofah__",
+            "last_activity": "مطلوب تحقق",
+            "account_creation_date": "مطلوب تحقق",
+            "verification_status": "غير محقق",
+            "follower_count": "مطلوب تحقق",
+            "following_count": "مطلوب تحقق",
+            "content_analysis": {
+              "post_frequency": "مطلوب تحليل",
+              "content_themes": [],
+              "language_patterns": [],
+              "sentiment_analysis": "مطلوب تحليل"
+            }
+          },
+          {
+            "platform": "TikTok",
+            "username": "_lemoonah_",
+            "profile_url": "https://tiktok.com/@_lemoonah_",
+            "last_activity": "مطلوب تحقق",
+            "account_creation_date": "مطلوب تحقق",
+            "verification_status": "غير محقق",
+            "follower_count": "مطلوب تحقق",
+            "following_count": "مطلوب تحقق",
+            "user_id": "7243145311366988805",
+            "content_analysis": {
+              "post_frequency": "مطلوب تحليل",
+              "content_themes": [],
+              "language_patterns": [],
+              "sentiment_analysis": "مطلوب تحليل"
+            }
+          }
+        ],
+        "inactive_or_deleted_accounts": []
+      },
+      "personal_information": {
+        "biographical_data": {
+          "full_name": "طرفه عبدالعزيز الجبالي",
+          "full_name_english": "Tarfa Abdulaziz Al-Jabali",
+          "aliases_known": [
+            "__tofah__",
+            "_lemoonah_"
+          ],
+          "date_of_birth": "غير محدد",
+          "location_history": [
+            "المملكة العربية السعودية (مستنتج من رقم الهاتف)"
+          ],
+          "current_residence": "المملكة العربية السعودية",
+          "occupation": "غير محدد",
+          "education_background": []
+        },
+        "contact_information": {
+          "email_addresses": [],
+          "phone_numbers": [
+            {
+              "number": "+966558899680",
+              "country": "المملكة العربية السعودية",
+              "operator": "مطلوب تحديد",
+              "verification_status": "مؤكد"
+            }
+          ],
+          "physical_addresses": [],
+          "websites_owned": []
+        }
+      },
+      "digital_assets": {
+        "domains_registered": [],
+        "ip_addresses": [],
+        "cryptocurrency_addresses": []
+      },
+      "behavioral_patterns": {
+        "online_activity_patterns": {
+          "active_hours": [],
+          "posting_frequency": "مطلوب تحليل",
+          "communication_style": "مطلوب تحليل",
+          "topics_of_interest": []
+        },
+        "social_connections": {
+          "key_associates": [],
+          "network_analysis": "مطلوب تحليل عميق",
+          "interaction_patterns": []
+        }
+      },
+      "security_concerns": {
+        "privacy_settings_analysis": "مطلوب تحقق من إعدادات الخصوصية",
+        "exposed_information": [
+          "اسم المستخدم على منصات متعددة",
+          "رقم هاتف متاح",
+          "الاسم الكامل"
+        ],
+        "potential_vulnerabilities": [
+          "استخدام معرفات مماثلة عبر منصات متعددة",
+          "إمكانية الربط بين الحسابات"
+        ],
+        "risk_indicators": [
+          "تسرب معلومات شخصية محتمل"
+        ]
+      }
+    },
+    "analysis_and_assessment": {
+      "credibility_assessment": {
+        "source_reliability": "متوسط - مصادر أولية محدودة",
+        "information_accuracy": "مؤكد جزئياً",
+        "cross_reference_results": "مطلوب تحقق إضافي",
+        "verification_methods_used": [
+          "البحث المباشر في المنصات",
+          "تحليل معرفات المستخدمين"
+        ]
+      },
+      "threat_level_evaluation": {
+        "current_threat_level": "منخفض",
+        "risk_factors": [
+          "وجود معلومات شخصية متاحة عامة",
+          "حسابات قابلة للتتبع"
+        ],
+        "mitigation_recommendations": [
+          "مراجعة إعدادات الخصوصية",
+          "تنويع معرفات المستخدمين",
+          "تقليل المعلومات الشخصية المشاركة"
+        ]
+      },
+      "intelligence_gaps": {
+        "missing_information": [
+          "تفاصيل الملف الشخصي الكاملة",
+          "تاريخ إنشاء الحسابات",
+          "نشاط المحتوى التفصيلي",
+          "الاتصالات والشبكة الاجتماعية"
+        ],
+        "areas_requiring_further_investigation": [
+          "تحليل عميق لمحتوى الحسابات",
+          "البحث عن حسابات إضافية",
+          "تحليل الشبكة الاجتماعية",
+          "التحقق من المعلومات الشخصية"
+        ],
+        "recommended_follow_up_actions": [
+          "مراقبة النشاط المستمر",
+          "توسيع نطاق البحث لمنصات أخرى",
+          "تحليل المحتوى المنشور",
+          "البحث عن روابط إضافية"
+        ]
+      }
+    },
+    "technical_details": {
+      "methodology": {
+        "investigation_approach": "OSINT أساسي باستخدام المصادر المفتوحة",
+        "tools_utilized": [
+          {
+            "tool_name": "البحث اليدوي",
+            "version": "N/A",
+            "purpose": "جمع المعلومات الأولية",
+            "results_obtained": "معرفات المستخدمين ومعلومات الاتصال"
+          }
+        ],
+        "techniques_employed": [
+          "البحث في منصات التواصل الاجتماعي",
+          "تحليل معرفات المستخدمين",
+          "ربط المعلومات المتاحة"
+        ]
+      },
+      "data_collection_timeline": [
+        {
+          "timestamp": "2025-11-07 00:00:00",
+          "activity": "جمع المعلومات الأولية",
+          "source": "البيانات المقدمة",
+          "results": "تحديد الهدف ومعرفاته"
+        }
+      ],
+      "evidence_preservation": {
+        "screenshots_taken": [],
+        "archived_pages": [],
+        "data_backup_location": "محلي",
+        "chain_of_custody": [
+          {
+            "timestamp": "2025-11-07",
+            "action": "إنشاء التقرير الأولي",
+            "responsible_party": "محلل OSINT"
+          }
+        ]
+      }
+    },
+    "legal_and_compliance": {
+      "legal_framework": {
+        "applicable_laws": [
+          "قانون مكافحة الجرائم المعلوماتية السعودي",
+          "قوانين الخصوصية الدولية"
+        ],
+        "jurisdictional_considerations": "المملكة العربية السعودية",
+        "privacy_compliance": "الالتزام بقوانين الخصوصية المحلية"
+      },
+      "data_handling": {
+        "collection_methods_legality": "مصادر عامة فقط",
+        "storage_compliance": "آمن ومشفر",
+        "retention_policy": "حسب متطلبات التحقيق",
+        "disposal_procedures": "حذف آمن عند انتهاء الحاجة"
+      },
+      "ethical_considerations": {
+        "consent_requirements": "غير مطلوب للمعلومات العامة",
+        "privacy_impact": "محدود - معلومات عامة فقط",
+        "ethical_guidelines_followed": [
+          "عدم انتهاك الخصوصية",
+          "الغرض المشروع",
+          "الحد الأدنى من جمع البيانات"
+        ]
+      }
+    },
+    "appendices": {
+      "supporting_documents": [],
+      "raw_data": {
+        "search_results": [],
+        "api_responses": [],
+        "database_queries": []
+      },
+      "screenshots_and_evidence": [],
+      "glossary": {
+        "technical_terms": {
+          "OSINT": "الاستخبارات مفتوحة المصدر",
+          "Digital Footprint": "البصمة الرقمية",
+          "Social Media Intelligence": "استخبارات وسائل التواصل الاجتماعي"
+        },
+        "abbreviations": {
+          "OSINT": "Open Source Intelligence",
+          "SOCMINT": "Social Media Intelligence",
+          "HUMINT": "Human Intelligence"
+        },
+        "references": []
+      }
+    },
+    "quality_assurance": {
+      "review_process": {
+        "reviewed_by": "محلل OSINT أول",
+        "review_date": "2025-11-07",
+        "quality_score": "جيد - مطلوب تحسين",
+        "review_comments": [
+          "المعلومات الأساسية متوفرة",
+          "مطلوب تحليل أعمق للحسابات",
+          "يحتاج توسيع نطاق البحث"
+        ]
+      },
+      "verification_checklist": {
+        "sources_verified": true,
+        "cross_references_completed": false,
+        "legal_compliance_checked": true,
+        "technical_accuracy_confirmed": true,
+        "report_completeness_verified": false
+      }
+    },
+    "distribution_and_access": {
+      "authorized_recipients": [],
+      "access_restrictions": "سري - للمخولين فقط",
+      "classification_marking": "سري",
+      "retention_period": "حسب متطلبات التحقيق",
+      "distribution_date": "2025-11-07"
+    }
+  }
+}

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSINT Tools - لوحة التحكم</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            direction: rtl;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .card-description {
+            color: #666;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        .card-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .quick-links {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-top: 30px;
+        }
+        
+        .quick-links h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .links-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .links-list li {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-right: 4px solid #667eea;
+            transition: all 0.3s;
+        }
+        
+        .links-list li:hover {
+            background: #e9ecef;
+            transform: translateX(-5px);
+        }
+        
+        .links-list a {
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+        
+        .links-list a i {
+            margin-left: 10px;
+            color: #667eea;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+        
+        .auto-open-notice {
+            background: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-right: 4px solid #ffc107;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-shield-alt"></i> OSINT Tools</h1>
+            <p>لوحة التحكم الرئيسية - أدوات الاستخبارات مفتوحة المصدر</p>
+        </div>
+        
+        <div class="auto-open-notice">
+            <i class="fas fa-info-circle"></i> انقر على أي بطاقة لفتحها مباشرة
+        </div>
+        
+        <div class="cards-grid">
+            <a href="social_mapper_arabic.html" class="card" onclick="trackClick('social_mapper')">
+                <div class="card-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <div class="card-title">Social Mapper</div>
+                <div class="card-description">
+                    أداة تعيين الوسائط الاجتماعية المتقدمة - ربط الهويات الرقمية عبر المنصات
+                </div>
+                <div class="card-badge">12+ منصة مدعومة</div>
+            </a>
+            
+            <a href="osint_professional_report_2025-11-07.html" class="card" onclick="trackClick('professional_report')">
+                <div class="card-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="card-title">تقرير OSINT المحترف</div>
+                <div class="card-description">
+                    تقرير شامل ومفصل عن طرفه عبدالعزيز الجبالي
+                </div>
+                <div class="card-badge">تقرير سري</div>
+            </a>
+            
+            <a href="osint_report_20251106_183721.html" class="card" onclick="trackClick('osint_report')">
+                <div class="card-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="card-title">تقرير OSINT الأساسي</div>
+                <div class="card-description">
+                    تقرير OSINT مع الحسابات والروابط والصور
+                </div>
+                <div class="card-badge">محدث</div>
+            </a>
+        </div>
+        
+        <div class="quick-links">
+            <h2><i class="fas fa-link"></i> روابط سريعة</h2>
+            <ul class="links-list">
+                <li>
+                    <a href="social_mapper_arabic.html">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Social Mapper - أداة تعيين الوسائط</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="osint_professional_report_2025-11-07.html">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>تقرير OSINT المحترف</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="osint_report_20251106_183721.html">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>تقرير OSINT الأساسي</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="OSINT_REPORT.md">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>تقرير Markdown</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="osint_professional_report_2025-11-07.json">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>تقرير JSON المحترف</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="osint_report_20251106_183721.json">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>تقرير JSON الأساسي</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p><i class="fas fa-server"></i> الخادم يعمل على: <strong>http://localhost:8000</strong></p>
+            <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">
+                جميع الأدوات جاهزة للاستخدام - انقر على أي بطاقة للفتح مباشرة
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // تتبع النقرات
+        function trackClick(type) {
+            console.log(`تم فتح: ${type}`);
+        }
+        
+        // إضافة تأثير عند التحميل
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.5s';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 100);
+            });
+        });
+        
+        // إضافة تأثير hover محسّن
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.border = '2px solid #667eea';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.border = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
