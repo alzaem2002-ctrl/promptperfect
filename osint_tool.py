@@ -108,7 +108,7 @@ To use this tool:
     """)
 
 def generate_report():
-    """Generate OSINT report"""
+    """Generate OSINT report with digital footprint analysis"""
     report = {
         "timestamp": datetime.now().isoformat(),
         "search_parameters": SEARCH_PARAMS,
@@ -120,7 +120,12 @@ def generate_report():
         "found_accounts": [],
         "connected_accounts": [],
         "messages": [],
-        "available_images": []
+        "available_images": [],
+        "digital_footprint": {
+            "name_connections": {},
+            "activity_analysis": {},
+            "cross_platform_links": []
+        }
     }
     
     for key, value in SEARCH_PARAMS.items():
@@ -175,6 +180,96 @@ def generate_report():
                 "user_id": SEARCH_PARAMS.get("tiktok_user_id", "")
             }
         })
+    
+    # Build name connections and digital footprint
+    primary_name = SEARCH_PARAMS.get("name", "")
+    username = SEARCH_PARAMS.get("username", "")
+    
+    # Create name connections mapping
+    name_variations = []
+    if primary_name:
+        name_variations.append(primary_name)
+    if username and username != primary_name:
+        name_variations.append(username)
+    
+    # Build cross-platform identity links
+    cross_platform_identity = {
+        "primary_name": primary_name,
+        "name_variations": name_variations,
+        "platforms": []
+    }
+    
+    # Add Instagram connection
+    if SEARCH_PARAMS.get("instagram_username"):
+        cross_platform_identity["platforms"].append({
+            "platform": "Instagram",
+            "username": SEARCH_PARAMS["instagram_username"],
+            "name_used": primary_name,
+            "connection_type": "username_match"
+        })
+    
+    # Add TikTok connection
+    if SEARCH_PARAMS.get("tiktok_username"):
+        cross_platform_identity["platforms"].append({
+            "platform": "TikTok",
+            "username": SEARCH_PARAMS["tiktok_username"],
+            "user_id": SEARCH_PARAMS.get("tiktok_user_id", ""),
+            "name_used": primary_name,
+            "connection_type": "username_match"
+        })
+    
+    # Add phone connection
+    if SEARCH_PARAMS.get("phone"):
+        cross_platform_identity["platforms"].append({
+            "platform": "Phone",
+            "number": SEARCH_PARAMS["phone"],
+            "name_used": primary_name,
+            "connection_type": "contact_info"
+        })
+    
+    report["digital_footprint"]["cross_platform_links"] = [cross_platform_identity]
+    
+    # Build name connections dictionary
+    report["digital_footprint"]["name_connections"] = {
+        "primary_name": primary_name,
+        "aliases": name_variations,
+        "platform_usernames": {
+            "Instagram": SEARCH_PARAMS.get("instagram_username", ""),
+            "TikTok": SEARCH_PARAMS.get("tiktok_username", ""),
+            "General": SEARCH_PARAMS.get("username", "")
+        },
+        "contact_info": {
+            "phone": SEARCH_PARAMS.get("phone", ""),
+            "email": SEARCH_PARAMS.get("email", "")
+        }
+    }
+    
+    # Build activity analysis structure
+    report["digital_footprint"]["activity_analysis"] = {
+        "instagram_activity": {
+            "username": SEARCH_PARAMS.get("instagram_username", ""),
+            "profile_url": f"https://instagram.com/{SEARCH_PARAMS.get('instagram_username', '')}" if SEARCH_PARAMS.get("instagram_username") else "",
+            "posts_analysis": "مطلوب تحليل - تحقق من المنشورات والتفاعلات",
+            "hashtags_used": [],
+            "locations_tagged": [],
+            "people_tagged": [],
+            "activity_timeline": []
+        },
+        "tiktok_activity": {
+            "username": SEARCH_PARAMS.get("tiktok_username", ""),
+            "user_id": SEARCH_PARAMS.get("tiktok_user_id", ""),
+            "profile_url": f"https://tiktok.com/@{SEARCH_PARAMS.get('tiktok_username', '')}" if SEARCH_PARAMS.get("tiktok_username") else "",
+            "videos_analysis": "مطلوب تحليل - تحقق من الفيديوهات والتفاعلات",
+            "sounds_used": [],
+            "hashtags_used": [],
+            "activity_timeline": []
+        },
+        "general_activity": {
+            "name_mentions": [],
+            "cross_platform_activity": [],
+            "digital_presence_summary": f"وجود رقمي على منصات متعددة مرتبطة بالاسم: {primary_name}"
+        }
+    }
     
     # Add connected/related accounts section (to be filled with discovered accounts)
     # This section will contain accounts found through mutual connections, 
@@ -500,6 +595,122 @@ def generate_html_report(report):
     else:
         html += """
         <p class="empty">No images found yet.</p>
+"""
+    
+    # Add Digital Footprint Section
+    if report.get('digital_footprint'):
+        footprint = report['digital_footprint']
+        
+        html += """
+        <h2>👣 البصمة الرقمية وربط الأسماء</h2>
+"""
+        
+        # Name Connections
+        if footprint.get('name_connections'):
+            name_conn = footprint['name_connections']
+            html += f"""
+        <div class="account-card" style="background: #e8f5e9;">
+            <h3>🔗 ربط الأسماء</h3>
+            <p><strong>الاسم الأساسي:</strong> {name_conn.get('primary_name', 'N/A')}</p>
+            <p><strong>الأسماء المستعارة:</strong> {', '.join(name_conn.get('aliases', []))}</p>
+            <h4>أسماء المستخدمين عبر المنصات:</h4>
+            <ul class="source-list">
+"""
+            for platform, username in name_conn.get('platform_usernames', {}).items():
+                if username:
+                    html += f"<li><strong>{platform}:</strong> {username}</li>\n"
+            html += """
+            </ul>
+            <h4>معلومات الاتصال:</h4>
+            <ul class="source-list">
+"""
+            contact = name_conn.get('contact_info', {})
+            if contact.get('phone'):
+                html += f"<li><strong>الهاتف:</strong> {contact['phone']}</li>\n"
+            if contact.get('email'):
+                html += f"<li><strong>البريد:</strong> {contact['email']}</li>\n"
+            html += """
+            </ul>
+        </div>
+"""
+        
+        # Cross-Platform Links
+        if footprint.get('cross_platform_links'):
+            html += """
+        <div class="account-card" style="background: #fff3e0;">
+            <h3>🌐 الروابط عبر المنصات</h3>
+"""
+            for link in footprint['cross_platform_links']:
+                html += f"""
+            <p><strong>الاسم الأساسي:</strong> {link.get('primary_name', 'N/A')}</p>
+            <p><strong>الأسماء المستخدمة:</strong> {', '.join(link.get('name_variations', []))}</p>
+            <h4>المنصات المرتبطة:</h4>
+            <ul class="source-list">
+"""
+                for platform in link.get('platforms', []):
+                    platform_name = platform.get('platform', 'N/A')
+                    username = platform.get('username', platform.get('number', 'N/A'))
+                    connection_type = platform.get('connection_type', 'N/A')
+                    html += f"""
+                <li>
+                    <strong>{platform_name}:</strong> {username}<br>
+                    <small>نوع الربط: {connection_type}</small>
+"""
+                    if platform.get('user_id'):
+                        html += f"<br><small>معرف المستخدم: {platform['user_id']}</small>"
+                    html += "</li>\n"
+                html += """
+            </ul>
+        </div>
+"""
+        
+        # Activity Analysis
+        if footprint.get('activity_analysis'):
+            activity = footprint['activity_analysis']
+            html += """
+        <div class="account-card" style="background: #f3e5f5;">
+            <h3>📊 تحليل النشاط والمشاركات</h3>
+"""
+            
+            # Instagram Activity
+            if activity.get('instagram_activity'):
+                insta = activity['instagram_activity']
+                if insta.get('username'):
+                    html += f"""
+            <h4>📷 نشاط Instagram</h4>
+            <p><strong>اسم المستخدم:</strong> {insta.get('username', 'N/A')}</p>
+            <p><strong>الرابط:</strong> <a href="{insta.get('profile_url', '#')}" target="_blank">{insta.get('profile_url', 'N/A')}</a></p>
+            <p><strong>تحليل المنشورات:</strong> {insta.get('posts_analysis', 'N/A')}</p>
+            <p><strong>الهاشتاقات المستخدمة:</strong> {', '.join(insta.get('hashtags_used', [])) if insta.get('hashtags_used') else 'لم يتم تحديدها بعد'}</p>
+            <p><strong>المواقع المحددة:</strong> {', '.join(insta.get('locations_tagged', [])) if insta.get('locations_tagged') else 'لم يتم تحديدها بعد'}</p>
+            <p><strong>الأشخاص المحددين:</strong> {', '.join(insta.get('people_tagged', [])) if insta.get('people_tagged') else 'لم يتم تحديدهم بعد'}</p>
+"""
+            
+            # TikTok Activity
+            if activity.get('tiktok_activity'):
+                tiktok = activity['tiktok_activity']
+                if tiktok.get('username'):
+                    html += f"""
+            <h4>🎵 نشاط TikTok</h4>
+            <p><strong>اسم المستخدم:</strong> {tiktok.get('username', 'N/A')}</p>
+            <p><strong>معرف المستخدم:</strong> {tiktok.get('user_id', 'N/A')}</p>
+            <p><strong>الرابط:</strong> <a href="{tiktok.get('profile_url', '#')}" target="_blank">{tiktok.get('profile_url', 'N/A')}</a></p>
+            <p><strong>تحليل الفيديوهات:</strong> {tiktok.get('videos_analysis', 'N/A')}</p>
+            <p><strong>الأصوات المستخدمة:</strong> {', '.join(tiktok.get('sounds_used', [])) if tiktok.get('sounds_used') else 'لم يتم تحديدها بعد'}</p>
+            <p><strong>الهاشتاقات المستخدمة:</strong> {', '.join(tiktok.get('hashtags_used', [])) if tiktok.get('hashtags_used') else 'لم يتم تحديدها بعد'}</p>
+"""
+            
+            # General Activity
+            if activity.get('general_activity'):
+                general = activity['general_activity']
+                html += f"""
+            <h4>🌍 النشاط العام</h4>
+            <p><strong>ملخص البصمة الرقمية:</strong> {general.get('digital_presence_summary', 'N/A')}</p>
+            <p><strong>الإشارات للاسم:</strong> {', '.join(general.get('name_mentions', [])) if general.get('name_mentions') else 'لم يتم العثور عليها بعد'}</p>
+"""
+            
+            html += """
+        </div>
 """
     
     html += f"""
