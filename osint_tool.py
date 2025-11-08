@@ -108,9 +108,15 @@ To use this tool:
     """)
 
 def generate_report():
-    """Generate OSINT report with digital footprint analysis"""
+    """Generate OSINT report with digital footprint analysis and verification"""
     report = {
         "timestamp": datetime.now().isoformat(),
+        "report_metadata": {
+            "report_type": "Professional OSINT Investigation",
+            "methodology": "OSINT Best Practices",
+            "verification_level": "Preliminary - Manual Review Required",
+            "credibility_note": "جميع البيانات أولية وتتطلب التحقق اليدوي"
+        },
         "search_parameters": SEARCH_PARAMS,
         "sources_configured": len(OSINT_SOURCES),
         "total_sources": sum(len(v) for v in OSINT_SOURCES.values()),
@@ -124,7 +130,19 @@ def generate_report():
         "digital_footprint": {
             "name_connections": {},
             "activity_analysis": {},
-            "cross_platform_links": []
+            "cross_platform_links": [],
+            "verification_status": "pending_manual_review"
+        },
+        "quality_assurance": {
+            "data_quality_score": 0.3,
+            "verification_required": True,
+            "recommendations": [
+                "إجراء فحص يدوي لجميع الحسابات المذكورة",
+                "التحقق من مطابقة الأسماء عبر المنصات",
+                "إجراء بحث عكسي لرقم الهاتف",
+                "التحقق من صحة معرفات المستخدمين",
+                "تحليل المحتوى المنشور للتحقق من الهوية"
+            ]
         }
     }
     
@@ -149,20 +167,22 @@ def generate_report():
                     "status": "pending"
                 }
     
-    # Add found accounts based on search parameters
+    # Add found accounts based on search parameters with verification status
     if SEARCH_PARAMS.get("instagram_username"):
         report["found_accounts"].append({
             "platform": "Instagram",
             "username": SEARCH_PARAMS["instagram_username"],
             "url": f"https://instagram.com/{SEARCH_PARAMS['instagram_username']}",
-            "status": "found",
+            "status": "requires_verification",
+            "verification_status": "pending",
             "profile_info": {
-                "display_name": "",
-                "bio": "",
-                "followers": "",
-                "following": "",
-                "posts": ""
-            }
+                "display_name": "يتطلب التحقق",
+                "bio": "يتطلب التحقق",
+                "followers": "يتطلب التحقق",
+                "following": "يتطلب التحقق",
+                "posts": "يتطلب التحقق"
+            },
+            "credibility_note": "المعلومات المقدمة أولية - يتطلب فحص يدوي للملف الشخصي للتأكد من المطابقة"
         })
     
     if SEARCH_PARAMS.get("tiktok_username"):
@@ -170,15 +190,17 @@ def generate_report():
             "platform": "TikTok",
             "username": SEARCH_PARAMS["tiktok_username"],
             "url": f"https://tiktok.com/@{SEARCH_PARAMS['tiktok_username']}",
-            "status": "found",
+            "status": "requires_verification",
+            "verification_status": "pending",
             "profile_info": {
-                "display_name": "",
-                "bio": "",
-                "followers": "",
-                "following": "",
-                "likes": "",
+                "display_name": "يتطلب التحقق",
+                "bio": "يتطلب التحقق",
+                "followers": "يتطلب التحقق",
+                "following": "يتطلب التحقق",
+                "likes": "يتطلب التحقق",
                 "user_id": SEARCH_PARAMS.get("tiktok_user_id", "")
-            }
+            },
+            "credibility_note": "المعلومات المقدمة أولية - يتطلب فحص يدوي للملف الشخصي للتأكد من المطابقة"
         })
     
     # Build name connections and digital footprint
@@ -229,7 +251,7 @@ def generate_report():
     
     report["digital_footprint"]["cross_platform_links"] = [cross_platform_identity]
     
-    # Build name connections dictionary
+    # Build name connections dictionary with verification notes
     report["digital_footprint"]["name_connections"] = {
         "primary_name": primary_name,
         "aliases": name_variations,
@@ -241,33 +263,39 @@ def generate_report():
         "contact_info": {
             "phone": SEARCH_PARAMS.get("phone", ""),
             "email": SEARCH_PARAMS.get("email", "")
-        }
+        },
+        "verification_notes": "يتطلب التحقق اليدوي من المطابقة بين الأسماء والحسابات - البيانات أولية"
     }
     
-    # Build activity analysis structure
+    # Build activity analysis structure with credibility notes
     report["digital_footprint"]["activity_analysis"] = {
         "instagram_activity": {
             "username": SEARCH_PARAMS.get("instagram_username", ""),
             "profile_url": f"https://instagram.com/{SEARCH_PARAMS.get('instagram_username', '')}" if SEARCH_PARAMS.get("instagram_username") else "",
-            "posts_analysis": "مطلوب تحليل - تحقق من المنشورات والتفاعلات",
+            "verification_status": "pending",
+            "posts_analysis": "يتطلب الوصول المباشر للملف الشخصي للتحقق",
             "hashtags_used": [],
             "locations_tagged": [],
             "people_tagged": [],
-            "activity_timeline": []
+            "activity_timeline": [],
+            "credibility_note": "البيانات المقدمة أولية - يتطلب تحقق يدوي من الملف الشخصي"
         },
         "tiktok_activity": {
             "username": SEARCH_PARAMS.get("tiktok_username", ""),
             "user_id": SEARCH_PARAMS.get("tiktok_user_id", ""),
             "profile_url": f"https://tiktok.com/@{SEARCH_PARAMS.get('tiktok_username', '')}" if SEARCH_PARAMS.get("tiktok_username") else "",
-            "videos_analysis": "مطلوب تحليل - تحقق من الفيديوهات والتفاعلات",
+            "verification_status": "pending",
+            "videos_analysis": "يتطلب الوصول المباشر للملف الشخصي للتحقق",
             "sounds_used": [],
             "hashtags_used": [],
-            "activity_timeline": []
+            "activity_timeline": [],
+            "credibility_note": "البيانات المقدمة أولية - يتطلب تحقق يدوي من الملف الشخصي"
         },
         "general_activity": {
             "name_mentions": [],
             "cross_platform_activity": [],
-            "digital_presence_summary": f"وجود رقمي على منصات متعددة مرتبطة بالاسم: {primary_name}"
+            "digital_presence_summary": f"وجود رقمي محتمل على منصات متعددة مرتبطة بالاسم: {primary_name}",
+            "verification_level": "preliminary"
         }
     }
     
@@ -713,10 +741,54 @@ def generate_html_report(report):
         </div>
 """
     
+    # Add Quality Assurance Section
+    if report.get('quality_assurance'):
+        quality = report['quality_assurance']
+        html += """
+        <h2>✅ ضمان الجودة والتحقق</h2>
+        <div class="account-card" style="background: #fef3c7; border-right-color: #f59e0b;">
+            <h3>📊 تقييم جودة البيانات</h3>
+            <p><strong>نقاط الجودة:</strong> <span style="font-size: 1.5em; color: #f59e0b; font-weight: bold;">{:.0%}</span></p>
+            <p><strong>حالة التحقق:</strong> <span class="status pending">يتطلب مراجعة يدوية</span></p>
+""".format(quality.get('data_quality_score', 0))
+        
+        if quality.get('recommendations'):
+            html += """
+            <h4>💡 التوصيات:</h4>
+            <ul class="source-list">
+"""
+            for rec in quality['recommendations']:
+                html += f"<li>{rec}</li>\n"
+            html += """
+            </ul>
+"""
+        html += """
+        </div>
+"""
+    
+    # Add Report Metadata
+    if report.get('report_metadata'):
+        metadata = report['report_metadata']
+        html += f"""
+        <h2>📋 معلومات التقرير</h2>
+        <div class="account-card" style="background: #e0e7ff;">
+            <p><strong>نوع التقرير:</strong> {metadata.get('report_type', 'N/A')}</p>
+            <p><strong>المنهجية:</strong> {metadata.get('methodology', 'N/A')}</p>
+            <p><strong>مستوى التحقق:</strong> {metadata.get('verification_level', 'N/A')}</p>
+            <div class="verification-status warning" style="margin-top: 15px;">
+                <strong>⚠️ ملاحظة مهمة:</strong> {metadata.get('credibility_note', 'البيانات أولية وتتطلب التحقق')}
+            </div>
+        </div>
+"""
+    
     html += f"""
         <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee; text-align: center; color: #666;">
             <p>Total Sources: {report['total_sources']} | Status: <span class="status {report['status']}">{report['status']}</span></p>
-            <p style="font-size: 12px;">Educational Purpose Only - Respect Privacy</p>
+            <p style="font-size: 12px; margin-top: 10px;">
+                <strong>⚠️ Professional OSINT Report - Preliminary Data</strong><br>
+                Manual verification and cross-referencing required for accuracy<br>
+                Educational Purpose Only - Respect Privacy
+            </p>
         </div>
     </div>
 </body>

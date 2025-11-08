@@ -1,0 +1,253 @@
+{
+  "timestamp": "2025-11-08T17:08:01.028330",
+  "report_metadata": {
+    "report_type": "Professional OSINT Investigation",
+    "methodology": "OSINT Best Practices",
+    "verification_level": "Preliminary - Manual Review Required",
+    "credibility_note": "جميع البيانات أولية وتتطلب التحقق اليدوي"
+  },
+  "search_parameters": {
+    "name": "طرفة عبدالعزيز الجبالي",
+    "username": "طرفة عبدالعزيز الجبالي",
+    "phone": "+966558899680",
+    "instagram_username": "__tofah__",
+    "tiktok_username": "_lemoonah_",
+    "tiktok_user_id": "7243145311366988805",
+    "email": "",
+    "domain": "",
+    "hash_value": ""
+  },
+  "sources_configured": 5,
+  "total_sources": 25,
+  "status": "ready",
+  "osint_sources": {
+    "username_search": {
+      "Sherlock": "https://github.com/sherlock-project/sherlock",
+      "WhatsMyName": "https://github.com/WebBreacher/WhatsMyName",
+      "Namechk": "https://namechk.com/",
+      "CheckUsernames": "https://checkusernames.com/",
+      "Maigret": "https://github.com/soxoj/maigret"
+    },
+    "phone_search": {
+      "PhoneInfoga": "https://github.com/sundowndev/phoneinfoga",
+      "TrueCaller": "https://www.truecaller.com/",
+      "WhitePages": "https://www.whitepages.com/",
+      "PeopleFinder": "https://www.peoplefinder.com/",
+      "Spokeo": "https://www.spokeo.com/"
+    },
+    "email_search": {
+      "Hunter.io": "https://hunter.io/",
+      "RocketReach": "https://rocketreach.co/",
+      "EmailFinder": "https://www.emailfinder.com/",
+      "Clearbit": "https://clearbit.com/",
+      "MailboxValidator": "https://www.mailboxvalidator.com/"
+    },
+    "domain_search": {
+      "Shodan": "https://www.shodan.io/",
+      "Censys": "https://search.censys.io/",
+      "WHOIS Lookup": "https://whois.net/",
+      "DNS Dumpster": "https://dnsdumpster.com/",
+      "SecurityTrails": "https://securitytrails.com/"
+    },
+    "hash_search": {
+      "VirusTotal": "https://www.virustotal.com/",
+      "Have I Been Pwned": "https://haveibeenpwned.com/",
+      "Hybrid Analysis": "https://www.hybrid-analysis.com/",
+      "Malware.Expert": "https://malware.expert/",
+      "AlienVault OTX": "https://otx.alienvault.com/"
+    }
+  },
+  "results": {
+    "name": {
+      "search_term": "طرفة عبدالعزيز الجبالي",
+      "sources": {
+        "Sherlock": "https://github.com/sherlock-project/sherlock",
+        "WhatsMyName": "https://github.com/WebBreacher/WhatsMyName",
+        "Namechk": "https://namechk.com/",
+        "CheckUsernames": "https://checkusernames.com/",
+        "Maigret": "https://github.com/soxoj/maigret"
+      },
+      "status": "pending"
+    },
+    "username": {
+      "search_term": "طرفة عبدالعزيز الجبالي",
+      "sources": {
+        "Sherlock": "https://github.com/sherlock-project/sherlock",
+        "WhatsMyName": "https://github.com/WebBreacher/WhatsMyName",
+        "Namechk": "https://namechk.com/",
+        "CheckUsernames": "https://checkusernames.com/",
+        "Maigret": "https://github.com/soxoj/maigret"
+      },
+      "status": "pending"
+    },
+    "phone": {
+      "search_term": "+966558899680",
+      "sources": {
+        "PhoneInfoga": "https://github.com/sundowndev/phoneinfoga",
+        "TrueCaller": "https://www.truecaller.com/",
+        "WhitePages": "https://www.whitepages.com/",
+        "PeopleFinder": "https://www.peoplefinder.com/",
+        "Spokeo": "https://www.spokeo.com/"
+      },
+      "status": "pending"
+    },
+    "instagram_username": {
+      "search_term": "__tofah__",
+      "sources": {
+        "Sherlock": "https://github.com/sherlock-project/sherlock",
+        "WhatsMyName": "https://github.com/WebBreacher/WhatsMyName",
+        "Namechk": "https://namechk.com/",
+        "CheckUsernames": "https://checkusernames.com/",
+        "Maigret": "https://github.com/soxoj/maigret"
+      },
+      "status": "pending"
+    },
+    "tiktok_username": {
+      "search_term": "_lemoonah_",
+      "sources": {
+        "Sherlock": "https://github.com/sherlock-project/sherlock",
+        "WhatsMyName": "https://github.com/WebBreacher/WhatsMyName",
+        "Namechk": "https://namechk.com/",
+        "CheckUsernames": "https://checkusernames.com/",
+        "Maigret": "https://github.com/soxoj/maigret"
+      },
+      "status": "pending"
+    },
+    "tiktok_user_id": {
+      "search_term": "7243145311366988805",
+      "sources": {
+        "Sherlock": "https://github.com/sherlock-project/sherlock",
+        "WhatsMyName": "https://github.com/WebBreacher/WhatsMyName",
+        "Namechk": "https://namechk.com/",
+        "CheckUsernames": "https://checkusernames.com/",
+        "Maigret": "https://github.com/soxoj/maigret"
+      },
+      "status": "pending"
+    }
+  },
+  "found_accounts": [
+    {
+      "platform": "Instagram",
+      "username": "__tofah__",
+      "url": "https://instagram.com/__tofah__",
+      "status": "requires_verification",
+      "verification_status": "pending",
+      "profile_info": {
+        "display_name": "يتطلب التحقق",
+        "bio": "يتطلب التحقق",
+        "followers": "يتطلب التحقق",
+        "following": "يتطلب التحقق",
+        "posts": "يتطلب التحقق"
+      },
+      "credibility_note": "المعلومات المقدمة أولية - يتطلب فحص يدوي للملف الشخصي للتأكد من المطابقة"
+    },
+    {
+      "platform": "TikTok",
+      "username": "_lemoonah_",
+      "url": "https://tiktok.com/@_lemoonah_",
+      "status": "requires_verification",
+      "verification_status": "pending",
+      "profile_info": {
+        "display_name": "يتطلب التحقق",
+        "bio": "يتطلب التحقق",
+        "followers": "يتطلب التحقق",
+        "following": "يتطلب التحقق",
+        "likes": "يتطلب التحقق",
+        "user_id": "7243145311366988805"
+      },
+      "credibility_note": "المعلومات المقدمة أولية - يتطلب فحص يدوي للملف الشخصي للتأكد من المطابقة"
+    }
+  ],
+  "connected_accounts": [],
+  "messages": [],
+  "available_images": [],
+  "digital_footprint": {
+    "name_connections": {
+      "primary_name": "طرفة عبدالعزيز الجبالي",
+      "aliases": [
+        "طرفة عبدالعزيز الجبالي"
+      ],
+      "platform_usernames": {
+        "Instagram": "__tofah__",
+        "TikTok": "_lemoonah_",
+        "General": "طرفة عبدالعزيز الجبالي"
+      },
+      "contact_info": {
+        "phone": "+966558899680",
+        "email": ""
+      },
+      "verification_notes": "يتطلب التحقق اليدوي من المطابقة بين الأسماء والحسابات - البيانات أولية"
+    },
+    "activity_analysis": {
+      "instagram_activity": {
+        "username": "__tofah__",
+        "profile_url": "https://instagram.com/__tofah__",
+        "verification_status": "pending",
+        "posts_analysis": "يتطلب الوصول المباشر للملف الشخصي للتحقق",
+        "hashtags_used": [],
+        "locations_tagged": [],
+        "people_tagged": [],
+        "activity_timeline": [],
+        "credibility_note": "البيانات المقدمة أولية - يتطلب تحقق يدوي من الملف الشخصي"
+      },
+      "tiktok_activity": {
+        "username": "_lemoonah_",
+        "user_id": "7243145311366988805",
+        "profile_url": "https://tiktok.com/@_lemoonah_",
+        "verification_status": "pending",
+        "videos_analysis": "يتطلب الوصول المباشر للملف الشخصي للتحقق",
+        "sounds_used": [],
+        "hashtags_used": [],
+        "activity_timeline": [],
+        "credibility_note": "البيانات المقدمة أولية - يتطلب تحقق يدوي من الملف الشخصي"
+      },
+      "general_activity": {
+        "name_mentions": [],
+        "cross_platform_activity": [],
+        "digital_presence_summary": "وجود رقمي محتمل على منصات متعددة مرتبطة بالاسم: طرفة عبدالعزيز الجبالي",
+        "verification_level": "preliminary"
+      }
+    },
+    "cross_platform_links": [
+      {
+        "primary_name": "طرفة عبدالعزيز الجبالي",
+        "name_variations": [
+          "طرفة عبدالعزيز الجبالي"
+        ],
+        "platforms": [
+          {
+            "platform": "Instagram",
+            "username": "__tofah__",
+            "name_used": "طرفة عبدالعزيز الجبالي",
+            "connection_type": "username_match"
+          },
+          {
+            "platform": "TikTok",
+            "username": "_lemoonah_",
+            "user_id": "7243145311366988805",
+            "name_used": "طرفة عبدالعزيز الجبالي",
+            "connection_type": "username_match"
+          },
+          {
+            "platform": "Phone",
+            "number": "+966558899680",
+            "name_used": "طرفة عبدالعزيز الجبالي",
+            "connection_type": "contact_info"
+          }
+        ]
+      }
+    ],
+    "verification_status": "pending_manual_review"
+  },
+  "quality_assurance": {
+    "data_quality_score": 0.3,
+    "verification_required": true,
+    "recommendations": [
+      "إجراء فحص يدوي لجميع الحسابات المذكورة",
+      "التحقق من مطابقة الأسماء عبر المنصات",
+      "إجراء بحث عكسي لرقم الهاتف",
+      "التحقق من صحة معرفات المستخدمين",
+      "تحليل المحتوى المنشور للتحقق من الهوية"
+    ]
+  }
+}
